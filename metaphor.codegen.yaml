@@ -1,0 +1,29 @@
+# Codegen policy for geo.
+#
+# `user_owned` globs are hand-written files that live inside generator-owned trees but are
+# NOT schema-derived. `metaphor schema generate [--force]` skips them wholesale (never reads,
+# merges, or deletes them). Everything else in src/ is regenerated from schema/models.
+#
+# Re-exports/declarations that must sit alongside generated code live inside
+# `// <<< CUSTOM ... // END CUSTOM` markers (service/mod.rs, presentation/http/mod.rs, lib.rs)
+# and are preserved by the marker mechanism, not listed here.
+#
+# Add your hand-authored services, handlers, tests, and docs below as you write them.
+
+user_owned:
+  # Read-only guarded route composition (reference data — no HTTP writes).
+  - "src/presentation/http/guarded_routes.rs"
+
+  # Readiness guard: fails if geo is unseeded or has denormalized-ancestor drift.
+  - "src/application/service/geo_readiness.rs"
+
+  # Behavior tests + BDD features.
+  - "tests/geo_golden_cases.rs"
+  - "tests/integrity_probes.rs"
+  - "tests/features/**"
+
+  # Adopted reference seed data (Indonesia wilayah) — must never be regenerated/wiped.
+  - "migrations/seeds/**"
+
+  # Hand-authored module documentation.
+  - "docs/**"
