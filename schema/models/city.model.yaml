@@ -1,0 +1,58 @@
+# =============================================================================
+# Domain: Geo
+# Entity: City
+# Description: Second-level administrative division (kota / kabupaten) under a Province.
+# Ancestor FKs (country_id) are denormalized for fast filtering — a reference read model.
+# =============================================================================
+
+models:
+  - name: City
+    collection: cities
+    description: "Second-level administrative division (kota / kabupaten)"
+
+    fields:
+      id:
+        type: uuid
+        attributes: ["@id", "@default(uuid)"]
+        description: "Unique city identifier"
+
+      name:
+        type: string
+        attributes: ["@required", "@max(120)"]
+        description: "City / regency name"
+
+      country_id:
+        type: uuid
+        attributes: ["@required", "@foreign_key(Country.id)"]
+        description: "Owning country (denormalized)"
+
+      province_id:
+        type: uuid
+        attributes: ["@required", "@foreign_key(Province.id)"]
+        description: "Owning province"
+
+      metadata:
+        type: Metadata
+        attributes: ["@audit_metadata"]
+        description: "Audit metadata (created_at, updated_at, deleted_at, created_by, updated_by, deleted_by)"
+
+    relations:
+      province:
+        type: Province
+        attributes: ["@one", "@foreign_key(province_id)"]
+        description: "Owning province"
+        inverse: cities
+
+      districts:
+        type: District[]
+        attributes: ["@one_to_many"]
+        description: "Districts of this city"
+        inverse: city
+
+    indexes:
+      - type: index
+        fields: [country_id]
+      - type: index
+        fields: [province_id]
+      - type: index
+        fields: [name]

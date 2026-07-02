@@ -1,0 +1,51 @@
+# =============================================================================
+# Domain: Geo
+# Entity: Country
+# Description: ISO country. Top of the administrative hierarchy.
+# =============================================================================
+
+models:
+  - name: Country
+    collection: countries
+    description: "ISO country (top of the administrative hierarchy)"
+
+    fields:
+      id:
+        type: uuid
+        attributes: ["@id", "@default(uuid)"]
+        description: "Unique country identifier"
+
+      isocode:
+        type: string
+        attributes: ["@required", "@max(3)"]
+        description: "ISO 3166-1 code (unique)"
+
+      name:
+        type: string
+        attributes: ["@required", "@max(120)"]
+        description: "Country name"
+
+      phonecode:
+        type: int
+        attributes: ["@default(0)"]
+        description: "International dialing code"
+
+      metadata:
+        type: Metadata
+        attributes: ["@audit_metadata"]
+        description: "Audit metadata (created_at, updated_at, deleted_at, created_by, updated_by, deleted_by)"
+
+    relations:
+      provinces:
+        type: Province[]
+        attributes: ["@one_to_many"]
+        description: "Provinces of this country"
+        inverse: country
+
+    indexes:
+      - type: unique
+        fields: [isocode]
+      - type: index
+        fields: [name]
+      - type: index
+        fields: [phonecode]

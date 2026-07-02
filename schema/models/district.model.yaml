@@ -1,0 +1,65 @@
+# =============================================================================
+# Domain: Geo
+# Entity: District
+# Description: Third-level administrative division (kecamatan) under a City.
+# Ancestor FKs (country_id, province_id) are denormalized for fast filtering.
+# =============================================================================
+
+models:
+  - name: District
+    collection: districts
+    description: "Third-level administrative division (kecamatan)"
+
+    fields:
+      id:
+        type: uuid
+        attributes: ["@id", "@default(uuid)"]
+        description: "Unique district identifier"
+
+      name:
+        type: string
+        attributes: ["@required", "@max(120)"]
+        description: "District name"
+
+      country_id:
+        type: uuid
+        attributes: ["@required", "@foreign_key(Country.id)"]
+        description: "Owning country (denormalized)"
+
+      province_id:
+        type: uuid
+        attributes: ["@required", "@foreign_key(Province.id)"]
+        description: "Owning province (denormalized)"
+
+      city_id:
+        type: uuid
+        attributes: ["@required", "@foreign_key(City.id)"]
+        description: "Owning city"
+
+      metadata:
+        type: Metadata
+        attributes: ["@audit_metadata"]
+        description: "Audit metadata (created_at, updated_at, deleted_at, created_by, updated_by, deleted_by)"
+
+    relations:
+      city:
+        type: City
+        attributes: ["@one", "@foreign_key(city_id)"]
+        description: "Owning city"
+        inverse: districts
+
+      subdistricts:
+        type: Subdistrict[]
+        attributes: ["@one_to_many"]
+        description: "Subdistricts of this district"
+        inverse: district
+
+    indexes:
+      - type: index
+        fields: [country_id]
+      - type: index
+        fields: [province_id]
+      - type: index
+        fields: [city_id]
+      - type: index
+        fields: [name]

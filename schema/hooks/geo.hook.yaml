@@ -1,0 +1,35 @@
+# =============================================================================
+# Geo Hooks - reference-master invariants
+# =============================================================================
+# Geo is READ-ONLY reference data (seeded from public administrative datasets). It has no
+# lifecycle state machines and no runtime write behavior — the invariants below are DB-enforced
+# and hold for the seed loader. Proven by tests/geo_golden_cases.rs.
+
+module: geo
+version: 2
+
+# No state machines — reference data has no lifecycle.
+state_machines: []
+
+# -----------------------------------------------------------------------------
+# Structural invariants (DB-enforced).
+# -----------------------------------------------------------------------------
+rules:
+  - id: R1
+    name: unique_country_isocode
+    when: seeding
+    assert: "country.isocode is unique"
+    error_code: duplicate_isocode
+  - id: R2
+    name: unique_subdistrict_per_district
+    when: seeding
+    assert: "subdistrict name is unique within its district"
+    error_code: duplicate_subdistrict
+  - id: R3
+    name: denormalized_ancestors_consistent
+    when: seeding
+    assert: "each row's denormalized country_id/province_id/city_id match its parent chain"
+    error_code: inconsistent_ancestors
+    note: "denormalized for fast filtering; the seed data is pre-validated and FK-checked on load"
+
+events: {}

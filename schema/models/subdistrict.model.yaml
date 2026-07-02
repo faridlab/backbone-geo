@@ -1,0 +1,86 @@
+# =============================================================================
+# Domain: Geo
+# Entity: Subdistrict
+# Description: Fourth-level administrative division (kelurahan / desa) under a District, with
+# postal code and coordinates. Ancestor FKs are denormalized for fast filtering; this is the
+# leaf the party/shipping/tax modules resolve an address down to.
+# =============================================================================
+
+models:
+  - name: Subdistrict
+    collection: subdistricts
+    description: "Fourth-level administrative division (kelurahan / desa)"
+
+    fields:
+      id:
+        type: uuid
+        attributes: ["@id", "@default(uuid)"]
+        description: "Unique subdistrict identifier"
+
+      name:
+        type: string
+        attributes: ["@required", "@max(120)"]
+        description: "Subdistrict name"
+
+      country_id:
+        type: uuid
+        attributes: ["@required", "@foreign_key(Country.id)"]
+        description: "Owning country (denormalized)"
+
+      province_id:
+        type: uuid
+        attributes: ["@required", "@foreign_key(Province.id)"]
+        description: "Owning province (denormalized)"
+
+      city_id:
+        type: uuid
+        attributes: ["@required", "@foreign_key(City.id)"]
+        description: "Owning city (denormalized)"
+
+      district_id:
+        type: uuid
+        attributes: ["@required", "@foreign_key(District.id)"]
+        description: "Owning district"
+
+      postal_code:
+        type: string?
+        attributes: ["@max(10)"]
+        description: "Postal code (kode pos)"
+
+      latitude:
+        type: decimal?
+        attributes: ["@precision(12,8)"]
+        description: "Latitude"
+
+      longitude:
+        type: decimal?
+        attributes: ["@precision(12,8)"]
+        description: "Longitude"
+
+      metadata:
+        type: Metadata
+        attributes: ["@audit_metadata"]
+        description: "Audit metadata (created_at, updated_at, deleted_at, created_by, updated_by, deleted_by)"
+
+    relations:
+      district:
+        type: District
+        attributes: ["@one", "@foreign_key(district_id)"]
+        description: "Owning district"
+        inverse: subdistricts
+
+    indexes:
+      - type: unique
+        fields: [district_id, name]
+      - type: index
+        fields: [country_id]
+      - type: index
+        fields: [province_id]
+      - type: index
+        fields: [city_id]
+      - type: index
+        fields: [district_id]
+      - type: index
+        fields: [postal_code]
+      - type: index
+        fields: [name]
