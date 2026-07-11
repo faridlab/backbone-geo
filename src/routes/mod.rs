@@ -12,10 +12,15 @@ use std::sync::Arc;
 // Import handlers
 use crate::presentation::http::{
     create_city_routes,
+    create_city_read_routes,
     create_country_routes,
+    create_country_read_routes,
     create_district_routes,
+    create_district_read_routes,
     create_province_routes,
-    create_subdistrict_routes
+    create_province_read_routes,
+    create_subdistrict_routes,
+    create_subdistrict_read_routes
 };
 
 // Import AppState for stateful routes
@@ -44,6 +49,20 @@ pub fn create_stateless_routes(module: &crate::GeoModule) -> Router<()> {
         .merge(create_district_routes(module.district_service.clone()))
         .merge(create_province_routes(module.province_service.clone()))
         .merge(create_subdistrict_routes(module.subdistrict_service.clone()))
+}
+
+/// Read-only routes for the Geo module — every entity mounted READ-ONLY (the guarded base).
+///
+/// The generic `create_stateless_routes` exposes full mutable CRUD with no domain
+/// validation; this exposes only reads, so generic mutation can't bypass a write
+/// service's invariants. Extend it: `create_readonly_geo_routes(m).merge(my_validated_writes)`.
+pub fn create_readonly_geo_routes(module: &crate::GeoModule) -> Router<()> {
+    Router::new()
+        .merge(create_city_read_routes(module.city_service.clone()))
+        .merge(create_country_read_routes(module.country_service.clone()))
+        .merge(create_district_read_routes(module.district_service.clone()))
+        .merge(create_province_read_routes(module.province_service.clone()))
+        .merge(create_subdistrict_read_routes(module.subdistrict_service.clone()))
 }
 
 /// Get all routes (stateless) for the Geo module.
