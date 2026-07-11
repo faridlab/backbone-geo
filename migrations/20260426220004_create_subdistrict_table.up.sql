@@ -11,8 +11,8 @@ CREATE TABLE IF NOT EXISTS geo.subdistricts (
     city_id UUID NOT NULL,
     district_id UUID NOT NULL,
     postal_code TEXT,
-    latitude NUMERIC,
-    longitude NUMERIC,
+    latitude NUMERIC(12, 8),
+    longitude NUMERIC(12, 8),
     metadata JSONB NOT NULL DEFAULT '{"created_at":null,"updated_at":null,"deleted_at":null,"created_by":null,"updated_by":null,"deleted_by":null}'::jsonb,
     PRIMARY KEY (id)
 );
