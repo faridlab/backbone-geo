@@ -1,0 +1,1022 @@
+{
+  "migrations/20260426220000_create_country_table.down.sql": {
+    "mtime": 1783771958.5623503,
+    "ast_hash": "5f0d69f18f36057a6f4c537f2484ae2a",
+    "semantic_hash": ""
+  },
+  "migrations/20260426220000_create_country_table.up.sql": {
+    "mtime": 1783771958.5828815,
+    "ast_hash": "79e3e56235ace75557802d99ab2f4ea3",
+    "semantic_hash": ""
+  },
+  "migrations/20260426220001_create_province_table.down.sql": {
+    "mtime": 1783771958.5491774,
+    "ast_hash": "cc934d804b3999ff01fced1d619c5ef4",
+    "semantic_hash": ""
+  },
+  "migrations/20260426220001_create_province_table.up.sql": {
+    "mtime": 1783771958.5666194,
+    "ast_hash": "7434517498e175e1f650b9f8ce024f75",
+    "semantic_hash": ""
+  },
+  "migrations/20260426220002_create_city_table.down.sql": {
+    "mtime": 1783771958.5703626,
+    "ast_hash": "da670eb7a24caa58b3ac701ffe99199b",
+    "semantic_hash": ""
+  },
+  "migrations/20260426220002_create_city_table.up.sql": {
+    "mtime": 1783771958.5572164,
+    "ast_hash": "9d406359713b30f6e9cf31cda931284c",
+    "semantic_hash": ""
+  },
+  "migrations/20260426220003_create_district_table.down.sql": {
+    "mtime": 1783771958.5863483,
+    "ast_hash": "d4814a95e888c0ba65c207faf78a64b4",
+    "semantic_hash": ""
+  },
+  "migrations/20260426220003_create_district_table.up.sql": {
+    "mtime": 1783771958.5842361,
+    "ast_hash": "5b0cd5289bb8500d8ebee045af6efbcd",
+    "semantic_hash": ""
+  },
+  "migrations/20260426220004_create_subdistrict_table.down.sql": {
+    "mtime": 1783771958.571202,
+    "ast_hash": "025960d769d5e63fa66473312a6df9be",
+    "semantic_hash": ""
+  },
+  "migrations/20260426220004_create_subdistrict_table.up.sql": {
+    "mtime": 1783771958.5817673,
+    "ast_hash": "0703584f2f65da84ed1a4227939d3eec",
+    "semantic_hash": ""
+  },
+  "migrations/20260426220007_add_audit_triggers.up.sql": {
+    "mtime": 1783771958.5707016,
+    "ast_hash": "b788d670def80dd5264e8ab0fd8a1100",
+    "semantic_hash": ""
+  },
+  "migrations/seeds/city_seed.sql": {
+    "mtime": 1782998885.0745142,
+    "ast_hash": "c458f5d81ce617a1a8e18542f45ed0fd",
+    "semantic_hash": ""
+  },
+  "migrations/seeds/country_seed.sql": {
+    "mtime": 1782998885.0678926,
+    "ast_hash": "b8baf87e3c6084581498dbbbeb25ecb6",
+    "semantic_hash": ""
+  },
+  "migrations/seeds/district_seed.sql": {
+    "mtime": 1782998885.084919,
+    "ast_hash": "a4389d11f47f42c516df8f2cc5694230",
+    "semantic_hash": ""
+  },
+  "migrations/seeds/load_all.sh": {
+    "mtime": 1783000661.7785878,
+    "ast_hash": "4034ff67882fad9349917073639042a8",
+    "semantic_hash": ""
+  },
+  "migrations/seeds/province_seed.sql": {
+    "mtime": 1782998885.070672,
+    "ast_hash": "89f0f28caa684ca6bdc6dbb7f4c9ce6d",
+    "semantic_hash": ""
+  },
+  "migrations/seeds/subdistrict_seed.sql": {
+    "mtime": 1782998885.1975555,
+    "ast_hash": "50c5aa19bb67893429283b4c3a6e63a5",
+    "semantic_hash": ""
+  },
+  "src/application/auth/city_auth.rs": {
+    "mtime": 1783771958.5702662,
+    "ast_hash": "451c267d7c8c0939f2482a9b13cd6b21",
+    "semantic_hash": ""
+  },
+  "src/application/auth/country_auth.rs": {
+    "mtime": 1783771958.5625536,
+    "ast_hash": "28d15ceee256ef5311942283144a011c",
+    "semantic_hash": ""
+  },
+  "src/application/auth/district_auth.rs": {
+    "mtime": 1783771958.5599723,
+    "ast_hash": "1c0eb677a3102bb06060c7dc48b9e23e",
+    "semantic_hash": ""
+  },
+  "src/application/auth/mod.rs": {
+    "mtime": 1783771958.582148,
+    "ast_hash": "5db5bb37583bd25f3192c57f5e33a293",
+    "semantic_hash": ""
+  },
+  "src/application/auth/province_auth.rs": {
+    "mtime": 1783771958.5823126,
+    "ast_hash": "1815b7a42ea7fb9e03a968ec13488f0a",
+    "semantic_hash": ""
+  },
+  "src/application/auth/subdistrict_auth.rs": {
+    "mtime": 1783771958.5689557,
+    "ast_hash": "16a86dc7a0cfc3f9b81be62d68ad0828",
+    "semantic_hash": ""
+  },
+  "src/application/bulk_operations/city_bulk.rs": {
+    "mtime": 1783771958.569129,
+    "ast_hash": "0b74bd280404e338ee3374ffa2a60997",
+    "semantic_hash": ""
+  },
+  "src/application/bulk_operations/country_bulk.rs": {
+    "mtime": 1783771958.574181,
+    "ast_hash": "0945d45c75cba71a45ea85db609e6fa2",
+    "semantic_hash": ""
+  },
+  "src/application/bulk_operations/district_bulk.rs": {
+    "mtime": 1783771958.5782256,
+    "ast_hash": "e9d8ed9ca3b7a061257b088c768449e9",
+    "semantic_hash": ""
+  },
+  "src/application/bulk_operations/mod.rs": {
+    "mtime": 1783771958.5767117,
+    "ast_hash": "c8c22cb7c5f2039dd01f4b92b022e683",
+    "semantic_hash": ""
+  },
+  "src/application/bulk_operations/province_bulk.rs": {
+    "mtime": 1783771958.5855892,
+    "ast_hash": "9ebf4e9b1b0195a38587cfa7c9462e0f",
+    "semantic_hash": ""
+  },
+  "src/application/bulk_operations/shared_types.rs": {
+    "mtime": 1783771958.5841482,
+    "ast_hash": "eb384c79b9ce28255d4eb01a77f8f998",
+    "semantic_hash": ""
+  },
+  "src/application/bulk_operations/subdistrict_bulk.rs": {
+    "mtime": 1783771958.5731115,
+    "ast_hash": "ffc72512cc193c1f4e890c9a867ca1e8",
+    "semantic_hash": ""
+  },
+  "src/application/mod.rs": {
+    "mtime": 1783771958.5561948,
+    "ast_hash": "89c84ef367a5d924bbc0e63b82934881",
+    "semantic_hash": ""
+  },
+  "src/application/service/city_service.rs": {
+    "mtime": 1783771958.5725868,
+    "ast_hash": "0043fd55477c3f9d06027c226c374a50",
+    "semantic_hash": ""
+  },
+  "src/application/service/country_service.rs": {
+    "mtime": 1783771958.5564737,
+    "ast_hash": "966a0b14ba1f1c1094d83455b58714f9",
+    "semantic_hash": ""
+  },
+  "src/application/service/district_service.rs": {
+    "mtime": 1783771958.5862675,
+    "ast_hash": "447dc9ad80a5e50c2686ef9918a4d6d7",
+    "semantic_hash": ""
+  },
+  "src/application/service/error.rs": {
+    "mtime": 1783771958.5534906,
+    "ast_hash": "1c53ca85e62ad709152bc3f94a41012d",
+    "semantic_hash": ""
+  },
+  "src/application/service/geo_readiness.rs": {
+    "mtime": 1783000516.061804,
+    "ast_hash": "69dbaa743a1577dcca7e66231f9beb44",
+    "semantic_hash": ""
+  },
+  "src/application/service/mod.rs": {
+    "mtime": 1783771958.5806146,
+    "ast_hash": "9bfd558b795e1a2ea9b2fd795b008f8a",
+    "semantic_hash": ""
+  },
+  "src/application/service/province_service.rs": {
+    "mtime": 1783771958.5827775,
+    "ast_hash": "8f517efb2a31d5570d3f7df2f56cbd6e",
+    "semantic_hash": ""
+  },
+  "src/application/service/subdistrict_service.rs": {
+    "mtime": 1783771958.5736833,
+    "ast_hash": "106824d6c17b11b48c9893c847bbb06e",
+    "semantic_hash": ""
+  },
+  "src/application/subscriptions/handlers.rs": {
+    "mtime": 1783771958.5777242,
+    "ast_hash": "0f67e5adc4cdc5c6d04499dc7551d91a",
+    "semantic_hash": ""
+  },
+  "src/application/subscriptions/mod.rs": {
+    "mtime": 1783771958.5753996,
+    "ast_hash": "d54234a4da12c09a1c00ca80985d6736",
+    "semantic_hash": ""
+  },
+  "src/application/subscriptions/registry.rs": {
+    "mtime": 1783771958.5879028,
+    "ast_hash": "683364343d24b7fee761038c332ffbfd",
+    "semantic_hash": ""
+  },
+  "src/application/usecases/base.rs": {
+    "mtime": 1783771958.5744662,
+    "ast_hash": "f3557ad4fb7005f99414187b3191aa89",
+    "semantic_hash": ""
+  },
+  "src/application/usecases/city_usecases.rs": {
+    "mtime": 1783771958.57911,
+    "ast_hash": "373b6aeba75b961cb6f460aec4360690",
+    "semantic_hash": ""
+  },
+  "src/application/usecases/country_usecases.rs": {
+    "mtime": 1783771958.5654137,
+    "ast_hash": "bc3552e67aaa447d86f8f4bf40d12832",
+    "semantic_hash": ""
+  },
+  "src/application/usecases/district_usecases.rs": {
+    "mtime": 1783771958.5637686,
+    "ast_hash": "afb61c511f45cc54f84493eeb07cc415",
+    "semantic_hash": ""
+  },
+  "src/application/usecases/mod.rs": {
+    "mtime": 1783771958.5732594,
+    "ast_hash": "8d9d343feb70a2107c7036f72b52d5e0",
+    "semantic_hash": ""
+  },
+  "src/application/usecases/province_usecases.rs": {
+    "mtime": 1783771958.5713599,
+    "ast_hash": "620c9393b37d6e2c6209b29fc9cafd76",
+    "semantic_hash": ""
+  },
+  "src/application/usecases/subdistrict_usecases.rs": {
+    "mtime": 1783771958.560239,
+    "ast_hash": "d223ba56d58c21b89b8022254142871e",
+    "semantic_hash": ""
+  },
+  "src/application/validator/city_validator.rs": {
+    "mtime": 1783771958.5775623,
+    "ast_hash": "ee88159bdb9c6f8396ac06a86f9ea351",
+    "semantic_hash": ""
+  },
+  "src/application/validator/country_validator.rs": {
+    "mtime": 1783771958.5792465,
+    "ast_hash": "b917c589b04bcfd8a910711072b92f5f",
+    "semantic_hash": ""
+  },
+  "src/application/validator/district_validator.rs": {
+    "mtime": 1783771958.5774117,
+    "ast_hash": "5883ae3613e104015660a668df3b7b1e",
+    "semantic_hash": ""
+  },
+  "src/application/validator/mod.rs": {
+    "mtime": 1783771958.5560024,
+    "ast_hash": "7799ba2ae67c751dafbb63012e56f03e",
+    "semantic_hash": ""
+  },
+  "src/application/validator/province_validator.rs": {
+    "mtime": 1783771958.5606344,
+    "ast_hash": "50fe459c0cd84e3d62ebc964b5424593",
+    "semantic_hash": ""
+  },
+  "src/application/validator/shared_types.rs": {
+    "mtime": 1783771958.5642354,
+    "ast_hash": "c03ab6c725ae7778bc0cd31ee4ffa63f",
+    "semantic_hash": ""
+  },
+  "src/application/validator/subdistrict_validator.rs": {
+    "mtime": 1783771958.5639331,
+    "ast_hash": "396c8a1262e95d8b50c9f96d15e2cdfc",
+    "semantic_hash": ""
+  },
+  "src/bin/seeder.rs": {
+    "mtime": 1783771958.5586886,
+    "ast_hash": "1e294bcf13fbe46f1555aa7cc3770d87",
+    "semantic_hash": ""
+  },
+  "src/config/generated.rs": {
+    "mtime": 1783771958.5751927,
+    "ast_hash": "2d58b6483962e5ab92c0e9ad5aed5bde",
+    "semantic_hash": ""
+  },
+  "src/domain/entity/city.rs": {
+    "mtime": 1783771958.555577,
+    "ast_hash": "a04e2a10dc609ef940889de05dc63c6a",
+    "semantic_hash": ""
+  },
+  "src/domain/entity/country.rs": {
+    "mtime": 1783771958.576199,
+    "ast_hash": "87b80dafb8b47bc4460e1bd6e724783b",
+    "semantic_hash": ""
+  },
+  "src/domain/entity/district.rs": {
+    "mtime": 1783771958.580232,
+    "ast_hash": "7abec63f83d5120155c8635e52683825",
+    "semantic_hash": ""
+  },
+  "src/domain/entity/mod.rs": {
+    "mtime": 1783771958.5499022,
+    "ast_hash": "e9c75be306000ed97f89d96d72ce4805",
+    "semantic_hash": ""
+  },
+  "src/domain/entity/province.rs": {
+    "mtime": 1783771958.5527074,
+    "ast_hash": "8c21c20675876902552547c12de10b9d",
+    "semantic_hash": ""
+  },
+  "src/domain/entity/subdistrict.rs": {
+    "mtime": 1783771958.5860298,
+    "ast_hash": "32615806c5e8d46ecbb8725bab02a154",
+    "semantic_hash": ""
+  },
+  "src/domain/event/city_event_handlers.rs": {
+    "mtime": 1783771958.5818923,
+    "ast_hash": "77a3516cbbc07527daf1169ac1566f9d",
+    "semantic_hash": ""
+  },
+  "src/domain/event/city_events.rs": {
+    "mtime": 1783771958.5738184,
+    "ast_hash": "53ea10ae1ea54ffada6f582e271ea485",
+    "semantic_hash": ""
+  },
+  "src/domain/event/country_event_handlers.rs": {
+    "mtime": 1783771958.5669794,
+    "ast_hash": "d4af88761bc5f806381ac0bce4ba772e",
+    "semantic_hash": ""
+  },
+  "src/domain/event/country_events.rs": {
+    "mtime": 1783771958.5869765,
+    "ast_hash": "7c97c48d2551779dd94c6273ae7d615e",
+    "semantic_hash": ""
+  },
+  "src/domain/event/district_event_handlers.rs": {
+    "mtime": 1783771958.5832994,
+    "ast_hash": "ceed5da93dd72f7950ad11a021acdde4",
+    "semantic_hash": ""
+  },
+  "src/domain/event/district_events.rs": {
+    "mtime": 1783771958.5681922,
+    "ast_hash": "1e2104bcd5fbc853e02f2c3848430852",
+    "semantic_hash": ""
+  },
+  "src/domain/event/mod.rs": {
+    "mtime": 1783771958.5765843,
+    "ast_hash": "8e98915e5d833443fe08cfad6f200ae9",
+    "semantic_hash": ""
+  },
+  "src/domain/event/province_event_handlers.rs": {
+    "mtime": 1783771958.579926,
+    "ast_hash": "c4395eb2a20afabfdeaa7a756cfcffc2",
+    "semantic_hash": ""
+  },
+  "src/domain/event/province_events.rs": {
+    "mtime": 1783771958.582449,
+    "ast_hash": "624ba747f9c9b2845c720af67f6c5b23",
+    "semantic_hash": ""
+  },
+  "src/domain/event/subdistrict_event_handlers.rs": {
+    "mtime": 1783771958.5694766,
+    "ast_hash": "edad8206edf59e9fff24ab1eb2ce8fe7",
+    "semantic_hash": ""
+  },
+  "src/domain/event/subdistrict_events.rs": {
+    "mtime": 1783771958.5603993,
+    "ast_hash": "5b2435b22e01074491e2bfb3e7c1482a",
+    "semantic_hash": ""
+  },
+  "src/domain/mod.rs": {
+    "mtime": 1783771958.578833,
+    "ast_hash": "5162305f73dd7db3665aad4a72e3178a",
+    "semantic_hash": ""
+  },
+  "src/domain/repositories/city_repository.rs": {
+    "mtime": 1783771958.5740385,
+    "ast_hash": "583b1cf3c005e6085ab00acedf5b605d",
+    "semantic_hash": ""
+  },
+  "src/domain/repositories/country_repository.rs": {
+    "mtime": 1783771958.5658593,
+    "ast_hash": "8104f393f7914b689cc64b01da5393ae",
+    "semantic_hash": ""
+  },
+  "src/domain/repositories/district_repository.rs": {
+    "mtime": 1783771958.5813046,
+    "ast_hash": "a6bbd419540f6ed4e90a2d7bbe13ff38",
+    "semantic_hash": ""
+  },
+  "src/domain/repositories/mod.rs": {
+    "mtime": 1783771958.5693092,
+    "ast_hash": "c842b6dab977d385ee4a260ae07752b3",
+    "semantic_hash": ""
+  },
+  "src/domain/repositories/province_repository.rs": {
+    "mtime": 1783771958.5568917,
+    "ast_hash": "9a1a2c8e424b43103f42b99d23db986e",
+    "semantic_hash": ""
+  },
+  "src/domain/repositories/subdistrict_repository.rs": {
+    "mtime": 1783771958.5831115,
+    "ast_hash": "375f6959a297944fc4891f5321b8ef94",
+    "semantic_hash": ""
+  },
+  "src/domain/services/city_domain_policy.rs": {
+    "mtime": 1783771958.5756981,
+    "ast_hash": "1eb19e722fcea2b34756169156cdd64a",
+    "semantic_hash": ""
+  },
+  "src/domain/services/country_domain_policy.rs": {
+    "mtime": 1783771958.5843554,
+    "ast_hash": "2e354a23eae113cdc96eba5f9be0b98f",
+    "semantic_hash": ""
+  },
+  "src/domain/services/district_domain_policy.rs": {
+    "mtime": 1783771958.5820196,
+    "ast_hash": "91a3272f406f4c079ba3435055d50f56",
+    "semantic_hash": ""
+  },
+  "src/domain/services/mod.rs": {
+    "mtime": 1783771958.559381,
+    "ast_hash": "9fdd5719a5245b6f40ea41f8c4b17e93",
+    "semantic_hash": ""
+  },
+  "src/domain/services/province_domain_policy.rs": {
+    "mtime": 1783771958.5735457,
+    "ast_hash": "f564fb7b47f7115587972d372db93f55",
+    "semantic_hash": ""
+  },
+  "src/domain/services/subdistrict_domain_policy.rs": {
+    "mtime": 1783771958.5770638,
+    "ast_hash": "e50905d780986eb01331c50a24514eb7",
+    "semantic_hash": ""
+  },
+  "src/domain/specifications/city_specification.rs": {
+    "mtime": 1783771958.5597296,
+    "ast_hash": "1ea594fc8795543348850588881ccc30",
+    "semantic_hash": ""
+  },
+  "src/domain/specifications/country_specification.rs": {
+    "mtime": 1783771958.5764382,
+    "ast_hash": "86f3bdf436bbb7e411964195a74237dd",
+    "semantic_hash": ""
+  },
+  "src/domain/specifications/district_specification.rs": {
+    "mtime": 1783771958.5652084,
+    "ast_hash": "c4122f513918f5d18ed22239af0fb5ab",
+    "semantic_hash": ""
+  },
+  "src/domain/specifications/mod.rs": {
+    "mtime": 1783771958.5514505,
+    "ast_hash": "f66859332f2fea14374403f3570c2216",
+    "semantic_hash": ""
+  },
+  "src/domain/specifications/province_specification.rs": {
+    "mtime": 1783771958.5717049,
+    "ast_hash": "18c3ca5dba9ca6719ddb238bf9edc422",
+    "semantic_hash": ""
+  },
+  "src/domain/specifications/subdistrict_specification.rs": {
+    "mtime": 1783771958.582612,
+    "ast_hash": "15a4243f6633090d13c33d639e4dd104",
+    "semantic_hash": ""
+  },
+  "src/domain/value_objects/actors.rs": {
+    "mtime": 1783771958.5711064,
+    "ast_hash": "e1e8e14faafd47c72ff607a9e2382362",
+    "semantic_hash": ""
+  },
+  "src/domain/value_objects/metadata.rs": {
+    "mtime": 1783771958.583971,
+    "ast_hash": "704ebda4640a0b693e8986fc98ce538a",
+    "semantic_hash": ""
+  },
+  "src/domain/value_objects/mod.rs": {
+    "mtime": 1783771958.5810819,
+    "ast_hash": "d3f4f4e3930a487febe9300ed110da77",
+    "semantic_hash": ""
+  },
+  "src/domain/value_objects/timestamps.rs": {
+    "mtime": 1783771958.5550156,
+    "ast_hash": "965e3ceb883b282b20288379b9ca4adc",
+    "semantic_hash": ""
+  },
+  "src/exports/events.rs": {
+    "mtime": 1783771958.564623,
+    "ast_hash": "2cb508456a62b647e0770c5889eff3e4",
+    "semantic_hash": ""
+  },
+  "src/exports/mod.rs": {
+    "mtime": 1783771958.5755708,
+    "ast_hash": "ce0deafca1505f5e90c4f1dbfe24ee47",
+    "semantic_hash": ""
+  },
+  "src/exports/services.rs": {
+    "mtime": 1783771958.5758834,
+    "ast_hash": "9abc513a94e8ef6a6af3dc9314579b5b",
+    "semantic_hash": ""
+  },
+  "src/exports/types.rs": {
+    "mtime": 1783771958.5786564,
+    "ast_hash": "9526a06a3ff9e45b68ab2f4ea8535435",
+    "semantic_hash": ""
+  },
+  "src/handlers/custom.rs": {
+    "mtime": 1783771958.5700853,
+    "ast_hash": "e9ce892f8e89f599758b29b63bba9b35",
+    "semantic_hash": ""
+  },
+  "src/handlers/mod.rs": {
+    "mtime": 1783771958.5747862,
+    "ast_hash": "3a21f9bf9ade5f0a29884404172814b9",
+    "semantic_hash": ""
+  },
+  "src/infrastructure/event_store/event_envelope.rs": {
+    "mtime": 1783771958.5539393,
+    "ast_hash": "4aeca053efc0f8b053eae59d611e2ab9",
+    "semantic_hash": ""
+  },
+  "src/infrastructure/event_store/event_store.rs": {
+    "mtime": 1783771958.5873904,
+    "ast_hash": "d83441d6b067e90c6e17b34fafe0fded",
+    "semantic_hash": ""
+  },
+  "src/infrastructure/event_store/mod.rs": {
+    "mtime": 1783771958.564081,
+    "ast_hash": "d93272ef260c1d0e0dba39ea692e4043",
+    "semantic_hash": ""
+  },
+  "src/infrastructure/event_store/snapshot_store.rs": {
+    "mtime": 1783771958.559071,
+    "ast_hash": "066e48e6f4a568b757c568bdae0c2dc1",
+    "semantic_hash": ""
+  },
+  "src/infrastructure/integration/mod.rs": {
+    "mtime": 1783771958.58773,
+    "ast_hash": "bdfa5abedad9cc842f68114b9662a716",
+    "semantic_hash": ""
+  },
+  "src/infrastructure/mod.rs": {
+    "mtime": 1783771958.5627713,
+    "ast_hash": "6527bf843046e50993d0319e75941679",
+    "semantic_hash": ""
+  },
+  "src/infrastructure/persistence/city_repository.rs": {
+    "mtime": 1783771958.5636063,
+    "ast_hash": "e209a6c17423ef06a644c8f611d9752c",
+    "semantic_hash": ""
+  },
+  "src/infrastructure/persistence/country_repository.rs": {
+    "mtime": 1783771958.5743368,
+    "ast_hash": "b6411a32ae4f6162d86cc824ca1b796c",
+    "semantic_hash": ""
+  },
+  "src/infrastructure/persistence/district_repository.rs": {
+    "mtime": 1783771958.573413,
+    "ast_hash": "154ce91d5e5205d9a879c79fefbe05f1",
+    "semantic_hash": ""
+  },
+  "src/infrastructure/persistence/mod.rs": {
+    "mtime": 1783771958.586478,
+    "ast_hash": "9f130e392579e07d14df15bdc7b58065",
+    "semantic_hash": ""
+  },
+  "src/infrastructure/persistence/province_repository.rs": {
+    "mtime": 1783771958.5650213,
+    "ast_hash": "0cd7a7547b702d2e4fa8df4f39ce370a",
+    "semantic_hash": ""
+  },
+  "src/infrastructure/persistence/subdistrict_repository.rs": {
+    "mtime": 1783771958.5672572,
+    "ast_hash": "1f8f6d27a394c11ee5731f3378764098",
+    "semantic_hash": ""
+  },
+  "src/lib.rs": {
+    "mtime": 1783771958.5795677,
+    "ast_hash": "23dff49a955ca902b2ec50955d0e3a68",
+    "semantic_hash": ""
+  },
+  "src/presentation/dto/city_dto.rs": {
+    "mtime": 1783771958.5612383,
+    "ast_hash": "768633734b01fa0ab355a9b8e57c5440",
+    "semantic_hash": ""
+  },
+  "src/presentation/dto/country_dto.rs": {
+    "mtime": 1783771958.5723279,
+    "ast_hash": "a2c7a7a8c30663015cce0c6f3f40d1c6",
+    "semantic_hash": ""
+  },
+  "src/presentation/dto/district_dto.rs": {
+    "mtime": 1783771958.5633366,
+    "ast_hash": "f237c240962acb8ba7d88e3158c38684",
+    "semantic_hash": ""
+  },
+  "src/presentation/dto/mod.rs": {
+    "mtime": 1783771958.5543811,
+    "ast_hash": "37ae90fe26b59eab98797b161d5971d1",
+    "semantic_hash": ""
+  },
+  "src/presentation/dto/province_dto.rs": {
+    "mtime": 1783771958.5520282,
+    "ast_hash": "d19c65aeaf3e1d6c15f252e3c6ef9fdb",
+    "semantic_hash": ""
+  },
+  "src/presentation/dto/subdistrict_dto.rs": {
+    "mtime": 1783771958.5509121,
+    "ast_hash": "b11b044e3a04dd79c5e9bedb6df62367",
+    "semantic_hash": ""
+  },
+  "src/presentation/http/city_handler.rs": {
+    "mtime": 1783771958.5816228,
+    "ast_hash": "c44a74ce7307809cf318c6d215a3bb50",
+    "semantic_hash": ""
+  },
+  "src/presentation/http/country_handler.rs": {
+    "mtime": 1783771958.5580115,
+    "ast_hash": "efbc3eafacea38752b41bcfcb3aa85a4",
+    "semantic_hash": ""
+  },
+  "src/presentation/http/district_handler.rs": {
+    "mtime": 1783771958.5808876,
+    "ast_hash": "ecbe3d42bcd8575531a2fa62f2513d4a",
+    "semantic_hash": ""
+  },
+  "src/presentation/http/guarded_routes.rs": {
+    "mtime": 1782998991.5160837,
+    "ast_hash": "9da60f128bc138a8c801b246da875673",
+    "semantic_hash": ""
+  },
+  "src/presentation/http/mod.rs": {
+    "mtime": 1783771958.5789764,
+    "ast_hash": "8f2ccdf94bf722c8700aee19d506c231",
+    "semantic_hash": ""
+  },
+  "src/presentation/http/province_handler.rs": {
+    "mtime": 1783771958.5678139,
+    "ast_hash": "aef0f266c50d5124e63c5adf800e51a0",
+    "semantic_hash": ""
+  },
+  "src/presentation/http/routes/generated.rs": {
+    "mtime": 1783771958.585458,
+    "ast_hash": "e8701b9619176b618c1889e4d5853b04",
+    "semantic_hash": ""
+  },
+  "src/presentation/http/subdistrict_handler.rs": {
+    "mtime": 1783771958.58677,
+    "ast_hash": "960a5f57b572e37d83b3164c49b846cb",
+    "semantic_hash": ""
+  },
+  "src/presentation/mod.rs": {
+    "mtime": 1783771958.5576375,
+    "ast_hash": "a2ddf220cae8eb548cb27ab984a6650d",
+    "semantic_hash": ""
+  },
+  "src/presentation/versioning/mod.rs": {
+    "mtime": 1783771958.565617,
+    "ast_hash": "9969e935d39c5ed126aed2c61e58a8a5",
+    "semantic_hash": ""
+  },
+  "src/presentation/versioning/version.rs": {
+    "mtime": 1783771958.5772483,
+    "ast_hash": "86504b693f3068a34ba6afee16d71699",
+    "semantic_hash": ""
+  },
+  "src/presentation/versioning/version_compat.rs": {
+    "mtime": 1783771958.5769327,
+    "ast_hash": "103c74f8080736812043d5f326447c53",
+    "semantic_hash": ""
+  },
+  "src/presentation/versioning/version_middleware.rs": {
+    "mtime": 1783771958.5845702,
+    "ast_hash": "5a90fd612564fa23f07eb083c31ed722",
+    "semantic_hash": ""
+  },
+  "src/presentation/versioning/version_router.rs": {
+    "mtime": 1783771958.5804675,
+    "ast_hash": "8645cd7db5962dec2f5ab9c273dfa8df",
+    "semantic_hash": ""
+  },
+  "src/routes/mod.rs": {
+    "mtime": 1783771958.5780427,
+    "ast_hash": "b54f023b4ba7cd38920121d22eaf9909",
+    "semantic_hash": ""
+  },
+  "src/seeders/city_seeder.rs": {
+    "mtime": 1783771958.5797985,
+    "ast_hash": "4d4f1c667c1b5da65a86e1bab80c79eb",
+    "semantic_hash": ""
+  },
+  "src/seeders/country_seeder.rs": {
+    "mtime": 1783771958.58512,
+    "ast_hash": "1aefb74f66c7f45b82e122dc20b697e8",
+    "semantic_hash": ""
+  },
+  "src/seeders/district_seeder.rs": {
+    "mtime": 1783771958.5715263,
+    "ast_hash": "3b7d68ad617b3154f1688ccce7601278",
+    "semantic_hash": ""
+  },
+  "src/seeders/mod.rs": {
+    "mtime": 1783771958.5705767,
+    "ast_hash": "6a742926d6425ec21bc3d474176f1f5f",
+    "semantic_hash": ""
+  },
+  "src/seeders/province_seeder.rs": {
+    "mtime": 1783771958.5683646,
+    "ast_hash": "57a74bc2a9c0e7a590acf1eb6740329d",
+    "semantic_hash": ""
+  },
+  "src/seeders/subdistrict_seeder.rs": {
+    "mtime": 1783771958.5530722,
+    "ast_hash": "45341fa8614e0a4e2f726dbc2bd31b2f",
+    "semantic_hash": ""
+  },
+  "tests/geo_golden_cases.rs": {
+    "mtime": 1783000581.97151,
+    "ast_hash": "20d919ae69c508b364b1a6386fd12f9d",
+    "semantic_hash": ""
+  },
+  "tests/integration/framework.rs": {
+    "mtime": 1783771958.5584707,
+    "ast_hash": "bf0c885b29bf9e2a2d54528b6a0f6491",
+    "semantic_hash": ""
+  },
+  "tests/integration/helpers.rs": {
+    "mtime": 1783771958.5687377,
+    "ast_hash": "8f38153f9394217f4cd09dc953318dac",
+    "semantic_hash": ""
+  },
+  "tests/integration/mod.rs": {
+    "mtime": 1783771958.570902,
+    "ast_hash": "2d98b4aa3df5d26d0d02b1edcb5ce392",
+    "semantic_hash": ""
+  },
+  "tests/integration/tests/city_api_test.rs": {
+    "mtime": 1783771958.584826,
+    "ast_hash": "1087eae99c3268cd6316615161a21e87",
+    "semantic_hash": ""
+  },
+  "tests/integration/tests/country_api_test.rs": {
+    "mtime": 1783771958.5622437,
+    "ast_hash": "b5c4753f7e11a644af9f6f2e0fe42ab2",
+    "semantic_hash": ""
+  },
+  "tests/integration/tests/crud_test_base.rs": {
+    "mtime": 1783771958.5664172,
+    "ast_hash": "ff8a3c0dfd897aab11c6a8c5b2bc4a24",
+    "semantic_hash": ""
+  },
+  "tests/integration/tests/district_api_test.rs": {
+    "mtime": 1783771958.5729065,
+    "ast_hash": "7f80d870a3d8eb258bbf39fbfe9560ed",
+    "semantic_hash": ""
+  },
+  "tests/integration/tests/mod.rs": {
+    "mtime": 1783771958.5619514,
+    "ast_hash": "e805895e9ce13287283e56b117ddb140",
+    "semantic_hash": ""
+  },
+  "tests/integration/tests/province_api_test.rs": {
+    "mtime": 1783771958.5685904,
+    "ast_hash": "f336fb29b98fb6456ff7d137383ddbf0",
+    "semantic_hash": ""
+  },
+  "tests/integration/tests/subdistrict_api_test.rs": {
+    "mtime": 1783771958.5698211,
+    "ast_hash": "a2e45bb3ef928e0f74a2d4415ed71ce2",
+    "semantic_hash": ""
+  },
+  "tests/integration_tests.rs": {
+    "mtime": 1783771958.5616364,
+    "ast_hash": "739ccdfb56c383dc5b1b27688e2f22d1",
+    "semantic_hash": ""
+  },
+  "tests/integrity_probes.rs": {
+    "mtime": 1782999129.2845228,
+    "ast_hash": "406b4bc5f72955dbb2ebbd564240fb93",
+    "semantic_hash": ""
+  },
+  "CLAUDE.md": {
+    "mtime": 1784708440.6003482,
+    "ast_hash": "a38b8374e2f0b58cbd553add81c364f4",
+    "semantic_hash": ""
+  },
+  "README.md": {
+    "mtime": 1783001644.4090796,
+    "ast_hash": "ae866bf9587fd812c545671aff2e3d34",
+    "semantic_hash": ""
+  },
+  "buf.yaml": {
+    "mtime": 1782979756.6845446,
+    "ast_hash": "398cfc4325b1a88c9e58ca21b9b78faa",
+    "semantic_hash": ""
+  },
+  "config/application-dev.yml": {
+    "mtime": 1783771958.5674305,
+    "ast_hash": "9fa309854491cb09af0a8e88a855f38c",
+    "semantic_hash": ""
+  },
+  "config/application-prod.yml": {
+    "mtime": 1783771958.5668283,
+    "ast_hash": "c32b15cf93af9570074f0eb32763a8ee",
+    "semantic_hash": ""
+  },
+  "config/application.yml": {
+    "mtime": 1783771958.5836775,
+    "ast_hash": "1a5c75e32c6eaacf3c74393a7aeedd76",
+    "semantic_hash": ""
+  },
+  "docs/README.md": {
+    "mtime": 1783002180.0680184,
+    "ast_hash": "9cdee17c77c006fe2564661fe221d6b0",
+    "semantic_hash": ""
+  },
+  "docs/adr/ADR-001-geo-reference-boundary.md": {
+    "mtime": 1782999452.2585053,
+    "ast_hash": "8e0085643ff8d6d91cb8bebdba11a55e",
+    "semantic_hash": ""
+  },
+  "docs/adr/ADR-002-seed-lifecycle-and-readiness.md": {
+    "mtime": 1783000711.8977926,
+    "ast_hash": "64b2b8d828ee411a7f16a0e2e117a0db",
+    "semantic_hash": ""
+  },
+  "docs/architecture.md": {
+    "mtime": 1783001235.137245,
+    "ast_hash": "c993e0f3f561cf9d1c10eab7b43ad748",
+    "semantic_hash": ""
+  },
+  "docs/background.md": {
+    "mtime": 1783001155.2889366,
+    "ast_hash": "57479e9cfd8a6f393ac1fd20a0fb93c2",
+    "semantic_hash": ""
+  },
+  "docs/business-flows/geo.md": {
+    "mtime": 1782999326.024166,
+    "ast_hash": "8651a19c471aaed53c3174d08d0eaf16",
+    "semantic_hash": ""
+  },
+  "docs/business-flows/golden-cases.md": {
+    "mtime": 1783000774.6150732,
+    "ast_hash": "6b87b66baa859522c15a202f09bdee36",
+    "semantic_hash": ""
+  },
+  "docs/contributing.md": {
+    "mtime": 1783001347.805348,
+    "ast_hash": "1bec05ac76e0e90107d2a5155ceffedd",
+    "semantic_hash": ""
+  },
+  "docs/developer-guide.md": {
+    "mtime": 1783001322.4660103,
+    "ast_hash": "f1222b4eb8bd4987dad97a3dbf4f45cc",
+    "semantic_hash": ""
+  },
+  "docs/extension-guide.md": {
+    "mtime": 1782999430.9878023,
+    "ast_hash": "4f1c9fd9948afcc64b09e87a0c983d53",
+    "semantic_hash": ""
+  },
+  "docs/fsd.md": {
+    "mtime": 1782999417.5267806,
+    "ast_hash": "0e20c94ae9a8f21263e86d9c5abc1307",
+    "semantic_hash": ""
+  },
+  "docs/glossary.md": {
+    "mtime": 1783001374.7883399,
+    "ast_hash": "6491626b0a07ffe0c4b1192436877f09",
+    "semantic_hash": ""
+  },
+  "docs/maintainer-guide.md": {
+    "mtime": 1783002172.0842252,
+    "ast_hash": "a101eeac2d739f42d641fd5ac2346796",
+    "semantic_hash": ""
+  },
+  "docs/philosophy.md": {
+    "mtime": 1783001128.8550403,
+    "ast_hash": "bbc9838c6db694823589be095f83ceb6",
+    "semantic_hash": ""
+  },
+  "docs/prd.md": {
+    "mtime": 1782999399.4934392,
+    "ast_hash": "510a2a89d14c65de02c7e2eaf68f0aa7",
+    "semantic_hash": ""
+  },
+  "docs/schema/ARCHITECTURE.md": {
+    "mtime": 1782979756.6851976,
+    "ast_hash": "75afd80a0dc842be226056b32a84d3b1",
+    "semantic_hash": ""
+  },
+  "docs/schema/ERROR_CODES.md": {
+    "mtime": 1782979756.6853821,
+    "ast_hash": "2045e07a98d19a2debc7aea6dbdeeb84",
+    "semantic_hash": ""
+  },
+  "docs/schema/EXAMPLES.md": {
+    "mtime": 1782979756.6855547,
+    "ast_hash": "f2de76a084ed9ddb94fbcf5407e1e10c",
+    "semantic_hash": ""
+  },
+  "docs/schema/GENERATION.md": {
+    "mtime": 1782979756.6857638,
+    "ast_hash": "80349671d0b05675f683c3a8439687b8",
+    "semantic_hash": ""
+  },
+  "docs/schema/INTEGRATION.md": {
+    "mtime": 1782979756.6859572,
+    "ast_hash": "8e7dfe46224986f0c3b1efef81300cf6",
+    "semantic_hash": ""
+  },
+  "docs/schema/OPENAPI.md": {
+    "mtime": 1782979756.6861668,
+    "ast_hash": "d3db7208b2564bdc83f3aae9d0c93940",
+    "semantic_hash": ""
+  },
+  "docs/schema/README.md": {
+    "mtime": 1782979756.6863422,
+    "ast_hash": "d5e79fbc1c5466b1b727a351789e8ad4",
+    "semantic_hash": ""
+  },
+  "docs/schema/RULE_FORMAT_HOOKS.md": {
+    "mtime": 1782979756.6865332,
+    "ast_hash": "ecd5132c7d812f96d92a1c8d6c4216ce",
+    "semantic_hash": ""
+  },
+  "docs/schema/RULE_FORMAT_MODELS.md": {
+    "mtime": 1782979756.6866996,
+    "ast_hash": "d48aa340857779559c11cab8ba9c59d6",
+    "semantic_hash": ""
+  },
+  "docs/schema/RULE_FORMAT_WORKFLOWS.md": {
+    "mtime": 1782979756.6871967,
+    "ast_hash": "b8a77047b7a85f071056b1dba51526f2",
+    "semantic_hash": ""
+  },
+  "docs/schema/SCHEMA-STANDARDS.md": {
+    "mtime": 1782979756.687351,
+    "ast_hash": "615120366ca43dc61d26825d80c80c7c",
+    "semantic_hash": ""
+  },
+  "docs/schema/TYPES.md": {
+    "mtime": 1782979756.6875052,
+    "ast_hash": "88db44558c0605bb6cf56279de57fb77",
+    "semantic_hash": ""
+  },
+  "docs/technology.md": {
+    "mtime": 1783001184.1576293,
+    "ast_hash": "91e56eb657e4c5059f4243594b012a29",
+    "semantic_hash": ""
+  },
+  "metaphor.codegen.yaml": {
+    "mtime": 1783000687.8614492,
+    "ast_hash": "8af52cd5d9e20252fc4735d6227dbc53",
+    "semantic_hash": ""
+  },
+  "migrations/seeds/README.md": {
+    "mtime": 1783000676.7873223,
+    "ast_hash": "bb4aa32ff285dac1620dcb1f049e0f72",
+    "semantic_hash": ""
+  },
+  "migrations/seeds/seed_order.yml": {
+    "mtime": 1782998464.559385,
+    "ast_hash": "b8588c4fa72d5e2156526d3816276716",
+    "semantic_hash": ""
+  },
+  "schema/hooks/geo.hook.yaml": {
+    "mtime": 1782999276.9491737,
+    "ast_hash": "eb5a85710c40340a14fba812e846e595",
+    "semantic_hash": ""
+  },
+  "schema/hooks/index.hook.yaml": {
+    "mtime": 1782999239.0510447,
+    "ast_hash": "61901e3a67c81a9363cac47ee0568e96",
+    "semantic_hash": ""
+  },
+  "schema/models/city.model.yaml": {
+    "mtime": 1782980744.2097988,
+    "ast_hash": "12c89dea031b8f6441fc6d877ddc69c5",
+    "semantic_hash": ""
+  },
+  "schema/models/country.model.yaml": {
+    "mtime": 1782980712.6489656,
+    "ast_hash": "fb376a97130dee4adfe380459c0abf66",
+    "semantic_hash": ""
+  },
+  "schema/models/district.model.yaml": {
+    "mtime": 1782980756.171531,
+    "ast_hash": "1c0808a3c331a6f0bde03e3cc90973d8",
+    "semantic_hash": ""
+  },
+  "schema/models/index.model.yaml": {
+    "mtime": 1782999697.3751252,
+    "ast_hash": "12970bd06f975c1ef5fbcbab861a954e",
+    "semantic_hash": ""
+  },
+  "schema/models/province.model.yaml": {
+    "mtime": 1782980728.2010071,
+    "ast_hash": "3a663942447cc1f979ead81d3b62bc25",
+    "semantic_hash": ""
+  },
+  "schema/models/subdistrict.model.yaml": {
+    "mtime": 1782980770.9037597,
+    "ast_hash": "ba127f656721fe6c95f680df951ed93c",
+    "semantic_hash": ""
+  },
+  "schema/openapi/openapi.yaml": {
+    "mtime": 1783771958.5617397,
+    "ast_hash": "22133ccc3e7f649fa85865aba850ada0",
+    "semantic_hash": ""
+  },
+  "schema/workflows/README.md": {
+    "mtime": 1782999306.606001,
+    "ast_hash": "7fa0e66e5e55ae4c1d45433d8f5488b4",
+    "semantic_hash": ""
+  }
+}
