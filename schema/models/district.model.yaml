@@ -55,6 +55,9 @@ models:
         inverse: district
 
     indexes:
+      - type: unique
+        fields: [city_id, name]
+        where: "(metadata->>'deleted_at') IS NULL"
       - type: index
         fields: [country_id]
       - type: index
