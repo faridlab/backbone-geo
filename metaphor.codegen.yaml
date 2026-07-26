@@ -17,6 +17,13 @@ user_owned:
   # Readiness guard: fails if geo is unseeded or has denormalized-ancestor drift.
   - "src/application/service/geo_readiness.rs"
 
+  # Own the hand-written geo SQL (the readiness guard's reference-count + denormalized-ancestor
+  # drift CTE) that geo_readiness.rs orchestrates. Declared here — not renamed with a `_custom`
+  # suffix — so the generator skips them wholesale; this declaration is what makes editing them
+  # legitimate.
+  - "src/infrastructure/persistence/country_repository.rs"
+  - "src/infrastructure/persistence/subdistrict_repository.rs"
+
   # Behavior tests + BDD features.
   - "tests/geo_golden_cases.rs"
   - "tests/integrity_probes.rs"

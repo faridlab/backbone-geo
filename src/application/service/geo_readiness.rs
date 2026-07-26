@@ -11,6 +11,8 @@
 
 use sqlx::PgPool;
 
+use crate::infrastructure::persistence::{CountryRepository, SubdistrictRepository};
+
 #[derive(Debug)]
 pub enum GeoReadinessError {
     /// Geo holds no reference data — the seed was never loaded (see migrations/seeds/README.md).
@@ -42,29 +44,18 @@ impl From<sqlx::Error> for GeoReadinessError {
 }
 
 /// Count rows whose denormalized ancestor ids disagree with their parent chain, across all levels.
+/// Thin orchestration over `SubdistrictRepository::ancestor_drift_count` — the SQL lives in the
+/// repo per the module's 4-layer rule; this free function is kept as the public API so callers
+/// (and tests) don't need to know which repo hosts the CTE.
 pub async fn ancestor_drift_count(pool: &PgPool) -> Result<i64, GeoReadinessError> {
-    let n: i64 = sqlx::query_scalar(
-        r#"
-        SELECT
-          (SELECT COUNT(*) FROM geo.subdistricts s JOIN geo.districts d ON d.id = s.district_id
-             WHERE s.city_id <> d.city_id OR s.province_id <> d.province_id OR s.country_id <> d.country_id)
-        + (SELECT COUNT(*) FROM geo.districts d JOIN geo.cities c ON c.id = d.city_id
-             WHERE d.province_id <> c.province_id OR d.country_id <> c.country_id)
-        + (SELECT COUNT(*) FROM geo.cities c JOIN geo.provinces p ON p.id = c.province_id
-             WHERE c.country_id <> p.country_id)
-        "#,
-    )
-    .fetch_one(pool)
-    .await?;
+    let n = SubdistrictRepository::ancestor_drift_count(pool).await?;
     Ok(n)
 }
 
 /// Startup / readiness gate. Returns `Ok(())` only if geo is seeded AND internally consistent.
 /// Call this from a composing service's readiness probe so an unseeded/drifted geo can't serve.
 pub async fn geo_readiness_check(pool: &PgPool) -> Result<(), GeoReadinessError> {
-    let countries: i64 = sqlx::query_scalar("SELECT COUNT(*) FROM geo.countries")
-        .fetch_one(pool)
-        .await?;
+    let countries = CountryRepository::count_all(pool).await?;
     if countries == 0 {
         return Err(GeoReadinessError::NotSeeded);
     }
