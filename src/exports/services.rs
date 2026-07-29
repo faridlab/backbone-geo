@@ -5,8 +5,6 @@
 //! These services provide the public API for other modules.
 //! They only expose read operations - writes go through events.
 
-use std::sync::Arc;
-
 use anyhow::Result;
 use async_trait::async_trait;
 use uuid::Uuid;
@@ -68,21 +66,6 @@ pub trait GeoQueryService: Send + Sync {
     /// Check if Subdistrict exists
     async fn subdistrict_exists(&self, id: SubdistrictId) -> Result<bool>;
 
-}
-
-// ============================================================================
-// QUERY SERVICE IMPLEMENTATION
-// ============================================================================
-
-/// Default implementation of GeoQueryService
-pub struct GeoQueryServiceImpl<R> {
-    repository: Arc<R>,
-}
-
-impl<R> GeoQueryServiceImpl<R> {
-    pub fn new(repository: Arc<R>) -> Self {
-        Self { repository }
-    }
 }
 
 // ============================================================================

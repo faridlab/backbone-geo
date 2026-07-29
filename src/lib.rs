@@ -58,11 +58,11 @@ use sqlx::PgPool;
 /// let router = geo.all_crud_routes();
 /// ```
 pub struct GeoModule {
-    pub city_service: Arc<CityService>,
-    pub country_service: Arc<CountryService>,
-    pub district_service: Arc<DistrictService>,
-    pub province_service: Arc<ProvinceService>,
-    pub subdistrict_service: Arc<SubdistrictService>,
+    pub(crate) city_service: Arc<CityService>,
+    pub(crate) country_service: Arc<CountryService>,
+    pub(crate) district_service: Arc<DistrictService>,
+    pub(crate) province_service: Arc<ProvinceService>,
+    pub(crate) subdistrict_service: Arc<SubdistrictService>,
 }
 
 impl GeoModule {
