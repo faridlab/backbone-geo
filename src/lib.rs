@@ -23,6 +23,7 @@ pub mod infrastructure;
 pub mod application;
 pub mod presentation;
 pub mod seeders;
+pub mod exports;
 
 // Re-exports for convenience - Domain entities
 pub use domain::entity::*;
@@ -63,6 +64,8 @@ pub struct GeoModule {
     pub(crate) district_service: Arc<DistrictService>,
     pub(crate) province_service: Arc<ProvinceService>,
     pub(crate) subdistrict_service: Arc<SubdistrictService>,
+    // <<< CUSTOM FIELDS
+    // END CUSTOM
 }
 
 impl GeoModule {
@@ -98,10 +101,35 @@ impl GeoModule {
     /// mount exposes unguarded writes. Compose a guarded router (read + validated
     /// writes) for production, or call `all_crud_routes()` to opt into the full
     /// unguarded surface explicitly.
-    #[deprecated(note = "mounts unvalidated generic CRUD on every entity; compose a guarded router for production, or call all_crud_routes() for the intentional full/unguarded surface")]
+    #[deprecated(note = "mounts unvalidated generic CRUD; prefer readonly_routes() + validated writes, or all_crud_routes() for the full/unguarded surface")]
     pub fn routes(&self) -> Router {
         self.all_crud_routes()
     }
+
+    /// Read-only routes for every entity (GET endpoints only) — the safe base.
+    ///
+    /// Generic mutation can't reach here, so this surface cannot bypass a
+    /// validated write service's invariants. Use this as the production base and
+    /// merge validated write routes (or a write service's HTTP layer) onto it.
+    pub fn readonly_routes(&self) -> Router {
+        use presentation::http::{
+            create_city_read_routes,
+            create_country_read_routes,
+            create_district_read_routes,
+            create_province_read_routes,
+            create_subdistrict_read_routes,
+        };
+
+        Router::new()
+            .merge(create_city_read_routes(self.city_service.clone()))
+            .merge(create_country_read_routes(self.country_service.clone()))
+            .merge(create_district_read_routes(self.district_service.clone()))
+            .merge(create_province_read_routes(self.province_service.clone()))
+            .merge(create_subdistrict_read_routes(self.subdistrict_service.clone()))
+    }
+
+    // <<< CUSTOM METHODS
+    // END CUSTOM
 }
 
 /// Builder for GeoModule

@@ -59,7 +59,7 @@ pub struct Country {
 impl Country {
     /// Create a builder for Country
     pub fn builder() -> CountryBuilder {
-        CountryBuilder::default()
+        <CountryBuilder as Default>::default()
     }
 
     /// Create a new Country with required fields

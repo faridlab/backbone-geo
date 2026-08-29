@@ -58,7 +58,7 @@ pub struct Province {
 impl Province {
     /// Create a builder for Province
     pub fn builder() -> ProvinceBuilder {
-        ProvinceBuilder::default()
+        <ProvinceBuilder as Default>::default()
     }
 
     /// Create a new Province with required fields

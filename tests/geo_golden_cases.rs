@@ -146,7 +146,8 @@ async fn readiness_and_ancestor_consistency() {
     }
 }
 
-// GGC-6: readiness DETECTS ancestor drift (guards the MEDIUM finding) — craft a bad subdistrict.
+// GGC-6: ancestor drift is REJECTED at write time by the composite chain FK, and the
+// readiness guard still DETECTS drift that predates the constraints.
 #[tokio::test]
 async fn readiness_detects_ancestor_drift() {
     use backbone_geo::{ancestor_drift_count, geo_readiness_check, GeoReadinessError};
@@ -158,11 +159,39 @@ async fn readiness_detects_ancestor_drift() {
     sqlx::query("INSERT INTO geo.provinces (id, name, country_id) VALUES ($1,'Wrong',$2)")
         .bind(bad_prov).bind(c).execute(&pool).await.unwrap();
     let bad = Uuid::new_v4();
-    sqlx::query(
+
+    // (1) Write-time rejection: the database itself must refuse chain-inconsistent rows
+    // (fk_subdistricts_district_chain — (district_id, city_id, province_id, country_id)
+    // references districts (id, city_id, province_id, country_id)).
+    let err = sqlx::query(
         "INSERT INTO geo.subdistricts (id, name, country_id, province_id, city_id, district_id)
          VALUES ($1,$2,$3,$4,$5,$6)",
     )
     .bind(bad).bind(uq("BadSub")).bind(c).bind(bad_prov).bind(ci).bind(d) // province_id != district's
+    .execute(&pool).await;
+    match err {
+        Err(sqlx::Error::Database(ref db_err)) => {
+            assert_eq!(db_err.code().as_deref(), Some("23503"), "expected FK violation");
+            assert!(
+                db_err.message().contains("fk_subdistricts_district_chain"),
+                "expected the chain FK to reject the insert, got: {}",
+                db_err.message()
+            );
+        }
+        other => panic!("chain-inconsistent insert must be rejected, got: {other:?}"),
+    }
+
+    // (2) The readiness guard remains defense-in-depth for databases that carried drift
+    // from before the constraints existed (or any write path that bypasses triggers).
+    // Requires the test role to be superuser: DISABLE TRIGGER ALL is the only way to
+    // mint a row the FKs would otherwise reject.
+    sqlx::query("ALTER TABLE geo.subdistricts DISABLE TRIGGER ALL")
+        .execute(&pool).await.unwrap();
+    sqlx::query(
+        "INSERT INTO geo.subdistricts (id, name, country_id, province_id, city_id, district_id)
+         VALUES ($1,$2,$3,$4,$5,$6)",
+    )
+    .bind(bad).bind(uq("BadSub")).bind(c).bind(bad_prov).bind(ci).bind(d)
     .execute(&pool).await.unwrap();
 
     let after = ancestor_drift_count(&pool).await.unwrap();
@@ -174,6 +203,8 @@ async fn readiness_detects_ancestor_drift() {
 
     // cleanup so we don't poison other tests on the shared DB
     sqlx::query("DELETE FROM geo.subdistricts WHERE id=$1").bind(bad).execute(&pool).await.unwrap();
+    sqlx::query("ALTER TABLE geo.subdistricts ENABLE TRIGGER ALL")
+        .execute(&pool).await.unwrap();
     sqlx::query("DELETE FROM geo.provinces WHERE id=$1").bind(bad_prov).execute(&pool).await.unwrap();
     let _ = (p,);
 }

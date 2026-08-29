@@ -65,7 +65,7 @@ pub struct Subdistrict {
 impl Subdistrict {
     /// Create a builder for Subdistrict
     pub fn builder() -> SubdistrictBuilder {
-        SubdistrictBuilder::default()
+        <SubdistrictBuilder as Default>::default()
     }
 
     /// Create a new Subdistrict with required fields
@@ -253,7 +253,7 @@ impl backbone_orm::EntityRepoMeta for Subdistrict {
         &["name"]
     }
     fn relations() -> &'static [(&'static str, &'static str, &'static str)] {
-        &[("district", "districts", "districtId")]
+        &[("country", "countries", "countryId"), ("province", "provinces", "provinceId"), ("city", "cities", "cityId"), ("district", "districts", "districtId")]
     }
 }
 

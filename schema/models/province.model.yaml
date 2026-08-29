@@ -43,6 +43,18 @@ models:
         description: "Cities of this province"
         inverse: province
 
+      districts:
+        type: District[]
+        attributes: ["@one_to_many"]
+        description: "Districts of this province (denormalized ancestor view)"
+        inverse: province
+
+      subdistricts:
+        type: Subdistrict[]
+        attributes: ["@one_to_many"]
+        description: "Subdistricts of this province (denormalized ancestor view)"
+        inverse: province
+
     indexes:
       - type: unique
         fields: [country_id, name]

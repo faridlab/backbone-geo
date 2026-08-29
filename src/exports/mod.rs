@@ -8,7 +8,7 @@
 //! ## Usage from other modules
 //!
 //! ```text
-//! use geo::exports::{CityDto, GeoQueryService};
+//! use geo::exports::{CityDto};
 //! ```
 
 mod types;
@@ -42,9 +42,6 @@ pub use events::*;
 /// - `SubdistrictDto` - Data transfer object for Subdistrict
 /// - `SubdistrictSummary` - Summary view of Subdistrict
 /// - `SubdistrictId` - Type-safe ID wrapper
-///
-/// ## Public Services
-/// - `GeoQueryService` - Read-only queries
 ///
 /// ## Public Events
 /// - `CityCreatedEvent` - Published when City is created

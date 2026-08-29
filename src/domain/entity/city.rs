@@ -59,7 +59,7 @@ pub struct City {
 impl City {
     /// Create a builder for City
     pub fn builder() -> CityBuilder {
-        CityBuilder::default()
+        <CityBuilder as Default>::default()
     }
 
     /// Create a new City with required fields
@@ -203,7 +203,7 @@ impl backbone_orm::EntityRepoMeta for City {
         &["name"]
     }
     fn relations() -> &'static [(&'static str, &'static str, &'static str)] {
-        &[("province", "provinces", "provinceId")]
+        &[("country", "countries", "countryId"), ("province", "provinces", "provinceId")]
     }
 }
 

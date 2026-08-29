@@ -42,6 +42,24 @@ models:
         description: "Provinces of this country"
         inverse: country
 
+      cities:
+        type: City[]
+        attributes: ["@one_to_many"]
+        description: "Cities of this country (denormalized ancestor view)"
+        inverse: country
+
+      districts:
+        type: District[]
+        attributes: ["@one_to_many"]
+        description: "Districts of this country (denormalized ancestor view)"
+        inverse: country
+
+      subdistricts:
+        type: Subdistrict[]
+        attributes: ["@one_to_many"]
+        description: "Subdistricts of this country (denormalized ancestor view)"
+        inverse: country
+
     indexes:
       - type: unique
         fields: [isocode]
