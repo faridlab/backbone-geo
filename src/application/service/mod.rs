@@ -14,6 +14,7 @@ pub mod province_service;
 pub mod subdistrict_service;
 
 // <<< CUSTOM
+pub mod geocode;
 pub mod geo_readiness;
 // END CUSTOM
 
@@ -23,5 +24,10 @@ pub use district_service::DistrictService;
 pub use province_service::ProvinceService;
 pub use subdistrict_service::SubdistrictService;
 // <<< CUSTOM
+pub use geocode::{
+    Coordinates, GeocodeError, GeocodeProvider, GeocodeQuery, GeocodeService, RateFence,
+    RefusingGeocodeProvider, StubGeocodeProvider, UnknownGeocodeProvider,
+    DEFAULT_GEOCODE_MAX_PER_WINDOW, DEFAULT_GEOCODE_WINDOW_SECS, GEOCODE_PROVIDER_ENV,
+};
 pub use geo_readiness::{ancestor_drift_count, geo_readiness_check, GeoReadinessError};
 // END CUSTOM

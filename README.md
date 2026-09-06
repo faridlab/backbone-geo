@@ -31,6 +31,38 @@ let app = axum::Router::new().merge(create_guarded_geo_routes(&geo));   // read-
 exposes the full generated CRUD for trusted admin/seed tooling only; `routes()` is a `#[deprecated]`
 alias. Reference data is never mutated over HTTP.
 
+## Geocode port (typed, fail-closed; `src/application/service/geocode.rs`)
+
+Forward geocoding (free-text address → coordinates) lives here behind ONE
+port, because the address substrate this module owns is where a geocoder's
+answer is consumed. The contract:
+
+- **No provider configured → typed refusal.** `GeocodeService::from_env()`
+  with `GEOCODE_PROVIDER` unset/empty/`none` yields the refusing provider:
+  every call answers `GeocodeError::ProviderNotConfigured` (HTTP 503,
+  `geocode_provider_not_configured`). It NEVER fails open to `(0.0, 0.0)` —
+  a sentinel coordinate answer is indistinguishable from real data
+  downstream. An unknown selector value fails closed too
+  (`geocode_provider_unknown`, naming the selector).
+- **`GEOCODE_PROVIDER=stub`** selects the deterministic offline stub
+  (answers central Jakarta −6.200000, 106.816666). Dev plumbing ONLY — it
+  exercises the full pipeline (selector → fence → provider) without
+  network or credentials; it is NOT a geocoder.
+- **The service owns the rate fence, providers never do.** Fixed-window
+  per-caller-IP budget (defaults 30 per 60s) enforced BEFORE the provider
+  is consulted; a refusal answers HTTP 429 with `retry_after_seconds`.
+  Invalid queries (empty components, >200-char fields) answer the typed
+  422 and burn NO fence budget.
+- **Providers answer `Coordinates` or `NoMatch`** — never sentinel coords
+  for "no answer"; the constructor refuses non-finite and out-of-range
+  values (lat −90..=90, lng −180..=180).
+
+Real network providers (Nominatim, Google) arrive WITH their consumer
+(logistics/POS maps) behind credentials, adding their selector arm in the
+same change. The knob is host-declared in BOTH
+`deployment/.env.dev.example` and `apps/serpa-service/.env.prod.example`
+(the prod compose rides the env_file chain).
+
 ## Documentation
 
 Start at the **[handbook index](docs/README.md)**. Key pages:
@@ -54,7 +86,7 @@ migrations/seeds/            # adopted Indonesia wilayah seed (user_owned; load_
 src/
 ├── lib.rs                   # GeoModule + builder + public re-exports (composition root)
 ├── domain/                  # entities + repository traits
-├── application/             # service type aliases, DTOs, geo_readiness.rs (hand-authored)
+├── application/             # service type aliases, DTOs, geo_readiness.rs + geocode.rs (hand-authored)
 ├── infrastructure/          # repository newtypes over GenericCrudRepository
 └── presentation/http/       # generated CRUD handlers + guarded_routes.rs (hand-authored, read-only)
 tests/                       # geo_golden_cases.rs, integrity_probes.rs, features/geo.feature

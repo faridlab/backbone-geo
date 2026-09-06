@@ -40,7 +40,10 @@ pub use application::service::SubdistrictService;
 
 // <<< CUSTOM
 pub use presentation::http::create_guarded_geo_routes;
-pub use application::service::{ancestor_drift_count, geo_readiness_check, GeoReadinessError};
+pub use application::service::{
+    ancestor_drift_count, geo_readiness_check, GeocodeError, GeocodeProvider, GeocodeQuery,
+    GeocodeService, GeoReadinessError,
+};
 // END CUSTOM
 use std::sync::Arc;
 use axum::Router;

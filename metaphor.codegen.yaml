@@ -17,6 +17,12 @@ user_owned:
   # Readiness guard: fails if geo is unseeded or has denormalized-ancestor drift.
   - "src/application/service/geo_readiness.rs"
 
+  # The typed geocode port (the base_geolocalize port, fail-closed and
+  # rate-fenced): provider trait + refusing default + deterministic offline
+  # stub + the per-caller fixed-window fence. No HTTP composer ships here —
+  # the consumer surface mounts it with its own caller-IP resolution.
+  - "src/application/service/geocode.rs"
+
   # Own the hand-written geo SQL (the readiness guard's reference-count + denormalized-ancestor
   # drift CTE) that geo_readiness.rs orchestrates. Declared here — not renamed with a `_custom`
   # suffix — so the generator skips them wholesale; this declaration is what makes editing them
