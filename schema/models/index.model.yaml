@@ -12,11 +12,10 @@
 module: geo
 version: 2
 schema: geo
-# ADR-0014 fence posture: none — pure reference data (the Kemendagri wilayah
+# Company fence: none by design — pure reference data (the Kemendagri wilayah
 # hierarchy), no company dimension at all: no fence, no RLS policies, no
-# synthesized company_id columns. Absence of the fence IS the behavior here;
-# the explicit declaration stops the ADR-0014 sweep from flagging the module.
-company_fence: none
+# synthesized company_id columns. Absence of the fence IS the behavior
+# (ADR-0014 posture 4; the module is tenant-agnostic under ADR-0029).
 description: "Administrative geography reference: Country/Province/City/District/Subdistrict (Indonesia-first)"
 
 config:
