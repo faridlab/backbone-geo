@@ -7,7 +7,7 @@ info:
     This API provides 11 standard CRUD endpoints for each model.
 
 servers:
-  - url: http://localhost:3000
+  - url: /
     description: Development server
 
 tags:
@@ -23,7 +23,7 @@ tags:
     description: Subdistrict management endpoints
 
 paths:
-  /api/v1/cities:
+  /api/v1/geo/cities:
     get:
       tags:
         - Cities
@@ -69,7 +69,7 @@ paths:
         '401':
           $ref: '#/components/responses/Unauthorized'
 
-  /api/v1/cities/{id}:
+  /api/v1/geo/cities/{id}:
     parameters:
       - $ref: '#/components/parameters/IdParam'
 
@@ -141,7 +141,7 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 
-  /api/v1/cities/bulk:
+  /api/v1/geo/cities/bulk:
     post:
       tags:
         - Cities
@@ -233,7 +233,7 @@ paths:
         '400':
           $ref: '#/components/responses/BadRequest'
 
-  /api/v1/cities/upsert:
+  /api/v1/geo/cities/upsert:
     post:
       tags:
         - Cities
@@ -263,7 +263,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/City'
 
-  /api/v1/cities/trash:
+  /api/v1/geo/cities/trash:
     get:
       tags:
         - Cities
@@ -280,7 +280,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/CityList'
 
-  /api/v1/cities/{id}/restore:
+  /api/v1/geo/cities/{id}/restore:
     parameters:
       - $ref: '#/components/parameters/IdParam'
     post:
@@ -298,7 +298,7 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 
-  /api/v1/cities/empty:
+  /api/v1/geo/cities/empty:
     delete:
       tags:
         - Cities
@@ -315,7 +315,7 @@ paths:
                   deleted_count:
                     type: integer
 
-  /api/v1/cities/delete/bulk:
+  /api/v1/geo/cities/delete/bulk:
     post:
       tags:
         - Cities
@@ -335,7 +335,7 @@ paths:
         '400':
           $ref: '#/components/responses/BadRequest'
 
-  /api/v1/cities/restore/bulk:
+  /api/v1/geo/cities/restore/bulk:
     post:
       tags:
         - Cities
@@ -353,7 +353,7 @@ paths:
         '400':
           $ref: '#/components/responses/BadRequest'
 
-  /api/v1/cities/restore/all:
+  /api/v1/geo/cities/restore/all:
     post:
       tags:
         - Cities
@@ -369,7 +369,7 @@ paths:
                 properties:
                   restored: { type: integer }
 
-  /api/v1/cities/trash/bulk:
+  /api/v1/geo/cities/trash/bulk:
     delete:
       tags:
         - Cities
@@ -389,7 +389,7 @@ paths:
         '400':
           $ref: '#/components/responses/BadRequest'
 
-  /api/v1/countries:
+  /api/v1/geo/countries:
     get:
       tags:
         - Countries
@@ -435,7 +435,7 @@ paths:
         '401':
           $ref: '#/components/responses/Unauthorized'
 
-  /api/v1/countries/{id}:
+  /api/v1/geo/countries/{id}:
     parameters:
       - $ref: '#/components/parameters/IdParam'
 
@@ -507,7 +507,7 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 
-  /api/v1/countries/bulk:
+  /api/v1/geo/countries/bulk:
     post:
       tags:
         - Countries
@@ -599,7 +599,7 @@ paths:
         '400':
           $ref: '#/components/responses/BadRequest'
 
-  /api/v1/countries/upsert:
+  /api/v1/geo/countries/upsert:
     post:
       tags:
         - Countries
@@ -629,7 +629,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/Country'
 
-  /api/v1/countries/trash:
+  /api/v1/geo/countries/trash:
     get:
       tags:
         - Countries
@@ -646,7 +646,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/CountryList'
 
-  /api/v1/countries/{id}/restore:
+  /api/v1/geo/countries/{id}/restore:
     parameters:
       - $ref: '#/components/parameters/IdParam'
     post:
@@ -664,7 +664,7 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 
-  /api/v1/countries/empty:
+  /api/v1/geo/countries/empty:
     delete:
       tags:
         - Countries
@@ -681,7 +681,7 @@ paths:
                   deleted_count:
                     type: integer
 
-  /api/v1/countries/delete/bulk:
+  /api/v1/geo/countries/delete/bulk:
     post:
       tags:
         - Countries
@@ -701,7 +701,7 @@ paths:
         '400':
           $ref: '#/components/responses/BadRequest'
 
-  /api/v1/countries/restore/bulk:
+  /api/v1/geo/countries/restore/bulk:
     post:
       tags:
         - Countries
@@ -719,7 +719,7 @@ paths:
         '400':
           $ref: '#/components/responses/BadRequest'
 
-  /api/v1/countries/restore/all:
+  /api/v1/geo/countries/restore/all:
     post:
       tags:
         - Countries
@@ -735,7 +735,7 @@ paths:
                 properties:
                   restored: { type: integer }
 
-  /api/v1/countries/trash/bulk:
+  /api/v1/geo/countries/trash/bulk:
     delete:
       tags:
         - Countries
@@ -755,7 +755,7 @@ paths:
         '400':
           $ref: '#/components/responses/BadRequest'
 
-  /api/v1/districts:
+  /api/v1/geo/districts:
     get:
       tags:
         - Districts
@@ -801,7 +801,7 @@ paths:
         '401':
           $ref: '#/components/responses/Unauthorized'
 
-  /api/v1/districts/{id}:
+  /api/v1/geo/districts/{id}:
     parameters:
       - $ref: '#/components/parameters/IdParam'
 
@@ -873,7 +873,7 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 
-  /api/v1/districts/bulk:
+  /api/v1/geo/districts/bulk:
     post:
       tags:
         - Districts
@@ -965,7 +965,7 @@ paths:
         '400':
           $ref: '#/components/responses/BadRequest'
 
-  /api/v1/districts/upsert:
+  /api/v1/geo/districts/upsert:
     post:
       tags:
         - Districts
@@ -995,7 +995,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/District'
 
-  /api/v1/districts/trash:
+  /api/v1/geo/districts/trash:
     get:
       tags:
         - Districts
@@ -1012,7 +1012,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/DistrictList'
 
-  /api/v1/districts/{id}/restore:
+  /api/v1/geo/districts/{id}/restore:
     parameters:
       - $ref: '#/components/parameters/IdParam'
     post:
@@ -1030,7 +1030,7 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 
-  /api/v1/districts/empty:
+  /api/v1/geo/districts/empty:
     delete:
       tags:
         - Districts
@@ -1047,7 +1047,7 @@ paths:
                   deleted_count:
                     type: integer
 
-  /api/v1/districts/delete/bulk:
+  /api/v1/geo/districts/delete/bulk:
     post:
       tags:
         - Districts
@@ -1067,7 +1067,7 @@ paths:
         '400':
           $ref: '#/components/responses/BadRequest'
 
-  /api/v1/districts/restore/bulk:
+  /api/v1/geo/districts/restore/bulk:
     post:
       tags:
         - Districts
@@ -1085,7 +1085,7 @@ paths:
         '400':
           $ref: '#/components/responses/BadRequest'
 
-  /api/v1/districts/restore/all:
+  /api/v1/geo/districts/restore/all:
     post:
       tags:
         - Districts
@@ -1101,7 +1101,7 @@ paths:
                 properties:
                   restored: { type: integer }
 
-  /api/v1/districts/trash/bulk:
+  /api/v1/geo/districts/trash/bulk:
     delete:
       tags:
         - Districts
@@ -1121,7 +1121,7 @@ paths:
         '400':
           $ref: '#/components/responses/BadRequest'
 
-  /api/v1/provinces:
+  /api/v1/geo/provinces:
     get:
       tags:
         - Provinces
@@ -1167,7 +1167,7 @@ paths:
         '401':
           $ref: '#/components/responses/Unauthorized'
 
-  /api/v1/provinces/{id}:
+  /api/v1/geo/provinces/{id}:
     parameters:
       - $ref: '#/components/parameters/IdParam'
 
@@ -1239,7 +1239,7 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 
-  /api/v1/provinces/bulk:
+  /api/v1/geo/provinces/bulk:
     post:
       tags:
         - Provinces
@@ -1331,7 +1331,7 @@ paths:
         '400':
           $ref: '#/components/responses/BadRequest'
 
-  /api/v1/provinces/upsert:
+  /api/v1/geo/provinces/upsert:
     post:
       tags:
         - Provinces
@@ -1361,7 +1361,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/Province'
 
-  /api/v1/provinces/trash:
+  /api/v1/geo/provinces/trash:
     get:
       tags:
         - Provinces
@@ -1378,7 +1378,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/ProvinceList'
 
-  /api/v1/provinces/{id}/restore:
+  /api/v1/geo/provinces/{id}/restore:
     parameters:
       - $ref: '#/components/parameters/IdParam'
     post:
@@ -1396,7 +1396,7 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 
-  /api/v1/provinces/empty:
+  /api/v1/geo/provinces/empty:
     delete:
       tags:
         - Provinces
@@ -1413,7 +1413,7 @@ paths:
                   deleted_count:
                     type: integer
 
-  /api/v1/provinces/delete/bulk:
+  /api/v1/geo/provinces/delete/bulk:
     post:
       tags:
         - Provinces
@@ -1433,7 +1433,7 @@ paths:
         '400':
           $ref: '#/components/responses/BadRequest'
 
-  /api/v1/provinces/restore/bulk:
+  /api/v1/geo/provinces/restore/bulk:
     post:
       tags:
         - Provinces
@@ -1451,7 +1451,7 @@ paths:
         '400':
           $ref: '#/components/responses/BadRequest'
 
-  /api/v1/provinces/restore/all:
+  /api/v1/geo/provinces/restore/all:
     post:
       tags:
         - Provinces
@@ -1467,7 +1467,7 @@ paths:
                 properties:
                   restored: { type: integer }
 
-  /api/v1/provinces/trash/bulk:
+  /api/v1/geo/provinces/trash/bulk:
     delete:
       tags:
         - Provinces
@@ -1487,7 +1487,7 @@ paths:
         '400':
           $ref: '#/components/responses/BadRequest'
 
-  /api/v1/subdistricts:
+  /api/v1/geo/subdistricts:
     get:
       tags:
         - Subdistricts
@@ -1533,7 +1533,7 @@ paths:
         '401':
           $ref: '#/components/responses/Unauthorized'
 
-  /api/v1/subdistricts/{id}:
+  /api/v1/geo/subdistricts/{id}:
     parameters:
       - $ref: '#/components/parameters/IdParam'
 
@@ -1605,7 +1605,7 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 
-  /api/v1/subdistricts/bulk:
+  /api/v1/geo/subdistricts/bulk:
     post:
       tags:
         - Subdistricts
@@ -1697,7 +1697,7 @@ paths:
         '400':
           $ref: '#/components/responses/BadRequest'
 
-  /api/v1/subdistricts/upsert:
+  /api/v1/geo/subdistricts/upsert:
     post:
       tags:
         - Subdistricts
@@ -1727,7 +1727,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/Subdistrict'
 
-  /api/v1/subdistricts/trash:
+  /api/v1/geo/subdistricts/trash:
     get:
       tags:
         - Subdistricts
@@ -1744,7 +1744,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/SubdistrictList'
 
-  /api/v1/subdistricts/{id}/restore:
+  /api/v1/geo/subdistricts/{id}/restore:
     parameters:
       - $ref: '#/components/parameters/IdParam'
     post:
@@ -1762,7 +1762,7 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 
-  /api/v1/subdistricts/empty:
+  /api/v1/geo/subdistricts/empty:
     delete:
       tags:
         - Subdistricts
@@ -1779,7 +1779,7 @@ paths:
                   deleted_count:
                     type: integer
 
-  /api/v1/subdistricts/delete/bulk:
+  /api/v1/geo/subdistricts/delete/bulk:
     post:
       tags:
         - Subdistricts
@@ -1799,7 +1799,7 @@ paths:
         '400':
           $ref: '#/components/responses/BadRequest'
 
-  /api/v1/subdistricts/restore/bulk:
+  /api/v1/geo/subdistricts/restore/bulk:
     post:
       tags:
         - Subdistricts
@@ -1817,7 +1817,7 @@ paths:
         '400':
           $ref: '#/components/responses/BadRequest'
 
-  /api/v1/subdistricts/restore/all:
+  /api/v1/geo/subdistricts/restore/all:
     post:
       tags:
         - Subdistricts
@@ -1833,7 +1833,7 @@ paths:
                 properties:
                   restored: { type: integer }
 
-  /api/v1/subdistricts/trash/bulk:
+  /api/v1/geo/subdistricts/trash/bulk:
     delete:
       tags:
         - Subdistricts
