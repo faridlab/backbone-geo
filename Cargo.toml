@@ -1,6 +1,6 @@
 [package]
 name = "backbone-geo"
-version = "0.4.7"
+version = "0.4.8"
 edition = "2021"
 description = "Indonesia administrative geography: Country, Province, City, District, Subdistrict (reference master)"
 
