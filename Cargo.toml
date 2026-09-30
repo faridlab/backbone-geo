@@ -3,6 +3,7 @@ name = "backbone-geo"
 version = "0.4.24"
 edition = "2021"
 description = "Indonesia administrative geography: Country, Province, City, District, Subdistrict (reference master)"
+license = "MIT OR Apache-2.0"
 
 [lib]
 path = "src/lib.rs"
