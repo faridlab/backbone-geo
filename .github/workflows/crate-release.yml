@@ -1,4 +1,4 @@
-name: Release
+name: Crate release
 
 # Gate every change and publish to crates.io from CI (ADR-0030): a pull request
 # builds, tests, audits the package and dry-runs the publish; a push to main whose
