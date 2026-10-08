@@ -24,6 +24,13 @@ pub mod application;
 pub mod presentation;
 pub mod seeders;
 pub mod exports;
+// <<< CUSTOM MODULES
+pub use presentation::http::create_guarded_geo_routes;
+pub use application::service::{
+    ancestor_drift_count, geo_readiness_check, GeocodeError, GeocodeProvider, GeocodeQuery,
+    GeocodeService, GeoReadinessError,
+};
+// END CUSTOM
 
 // Re-exports for convenience - Domain entities
 pub use domain::entity::*;
@@ -38,13 +45,9 @@ pub use application::service::DistrictService;
 pub use application::service::ProvinceService;
 pub use application::service::SubdistrictService;
 
-// <<< CUSTOM
-pub use presentation::http::create_guarded_geo_routes;
-pub use application::service::{
-    ancestor_drift_count, geo_readiness_check, GeocodeError, GeocodeProvider, GeocodeQuery,
-    GeocodeService, GeoReadinessError,
-};
-// END CUSTOM
+// Re-exports - Validation
+pub use application::validator::{ValidationError, ValidationResult};
+
 use std::sync::Arc;
 use axum::Router;
 use sqlx::PgPool;
@@ -138,6 +141,8 @@ impl GeoModule {
 /// Builder for GeoModule
 pub struct GeoModuleBuilder {
     db_pool: Option<PgPool>,
+    // <<< CUSTOM BUILDER FIELDS
+    // END CUSTOM
 }
 
 impl GeoModuleBuilder {
@@ -145,6 +150,8 @@ impl GeoModuleBuilder {
     pub fn new() -> Self {
         Self {
             db_pool: None,
+            // <<< CUSTOM BUILDER DEFAULTS
+            // END CUSTOM
         }
     }
 

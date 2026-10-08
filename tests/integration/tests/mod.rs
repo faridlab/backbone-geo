@@ -13,7 +13,6 @@ pub mod province_api_test;
 pub mod subdistrict_api_test;
 
 // Re-exports for convenience
-pub use crud_test_base::*;
 pub use city_api_test::*;
 pub use country_api_test::*;
 pub use district_api_test::*;
