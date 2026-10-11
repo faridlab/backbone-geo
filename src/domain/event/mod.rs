@@ -24,5 +24,3 @@ pub use province_event_handlers::ProvinceEventHandler;
 pub use subdistrict_events::{SubdistrictEvent, SubdistrictEventPublisher, NoopSubdistrictEventPublisher};
 pub use subdistrict_event_handlers::SubdistrictEventHandler;
 
-// <<< CUSTOM
-// END CUSTOM

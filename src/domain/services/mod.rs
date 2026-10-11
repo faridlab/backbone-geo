@@ -14,5 +14,3 @@ pub use district_domain_policy::DistrictDomainPolicy;
 pub use province_domain_policy::ProvinceDomainPolicy;
 pub use subdistrict_domain_policy::SubdistrictDomainPolicy;
 
-// <<< CUSTOM
-// END CUSTOM

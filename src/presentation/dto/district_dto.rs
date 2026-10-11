@@ -269,7 +269,7 @@ impl backbone_core::ApplyUpdateDto<UpdateDistrictDto> for District {
 // Custom DTOs
 // =============================================================================
 
-// <<< CUSTOM DTOs
 // Add custom DTOs specific to District here.
 // This section will be preserved during regeneration.
 // >>> END CUSTOM DTOs
+

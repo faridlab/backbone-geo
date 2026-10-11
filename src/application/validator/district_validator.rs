@@ -16,9 +16,5 @@ pub type DistrictValidator = EntityValidator<District>;
 pub fn district_validator() -> DistrictValidator {
     EntityValidator::new()
         .rule(RequiredString::new("name", |e: &District| &e.name))
-    // <<< CUSTOM RULES
-    // END CUSTOM RULES
 }
 
-// <<< CUSTOM
-// END CUSTOM

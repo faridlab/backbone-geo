@@ -253,7 +253,7 @@ impl backbone_core::ApplyUpdateDto<UpdateCountryDto> for Country {
 // Custom DTOs
 // =============================================================================
 
-// <<< CUSTOM DTOs
 // Add custom DTOs specific to Country here.
 // This section will be preserved during regeneration.
 // >>> END CUSTOM DTOs
+

@@ -18,5 +18,3 @@ use crate::domain::entity::Subdistrict;
 /// service. `PermitAllPolicy` is the safe default until then.
 pub type SubdistrictDomainPolicy = PermitAllPolicy<Subdistrict>;
 
-// <<< CUSTOM
-// END CUSTOM

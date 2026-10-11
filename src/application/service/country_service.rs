@@ -32,5 +32,3 @@ pub type CountryService = GenericCrudService<
     CountryRepository,
 >;
 
-// <<< CUSTOM
-// END CUSTOM

@@ -24,8 +24,6 @@ pub mod application;
 pub mod presentation;
 pub mod seeders;
 pub mod exports;
-// <<< CUSTOM MODULES
-// END CUSTOM
 
 // Re-exports for convenience - Domain entities
 pub use domain::entity::*;
@@ -65,8 +63,6 @@ pub struct GeoModule {
     pub(crate) district_service: Arc<DistrictService>,
     pub(crate) province_service: Arc<ProvinceService>,
     pub(crate) subdistrict_service: Arc<SubdistrictService>,
-    // <<< CUSTOM FIELDS
-    // END CUSTOM
 }
 
 impl GeoModule {
@@ -129,15 +125,11 @@ impl GeoModule {
             .merge(create_subdistrict_read_routes(self.subdistrict_service.clone()))
     }
 
-    // <<< CUSTOM METHODS
-    // END CUSTOM
 }
 
 /// Builder for GeoModule
 pub struct GeoModuleBuilder {
     db_pool: Option<PgPool>,
-    // <<< CUSTOM BUILDER FIELDS
-    // END CUSTOM
 }
 
 impl GeoModuleBuilder {
@@ -145,8 +137,6 @@ impl GeoModuleBuilder {
     pub fn new() -> Self {
         Self {
             db_pool: None,
-            // <<< CUSTOM BUILDER DEFAULTS
-            // END CUSTOM
         }
     }
 
@@ -156,8 +146,6 @@ impl GeoModuleBuilder {
         self
     }
 
-    // <<< CUSTOM - custom builder methods
-    // END CUSTOM
 
     /// Build the module with configured dependencies
     pub fn build(self) -> anyhow::Result<GeoModule> {
@@ -184,8 +172,6 @@ impl GeoModuleBuilder {
         let subdistrict_repository = Arc::new(SubdistrictRepository::new(db_pool.clone()));
         let subdistrict_service = Arc::new(SubdistrictService::with_repository(subdistrict_repository.clone()));
 
-        // <<< CUSTOM
-        // END CUSTOM
 
         Ok(GeoModule {
             city_service,
@@ -193,8 +179,6 @@ impl GeoModuleBuilder {
             district_service,
             province_service,
             subdistrict_service,
-            // <<< CUSTOM
-            // END CUSTOM
         })
     }
 }

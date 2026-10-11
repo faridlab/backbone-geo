@@ -32,5 +32,3 @@ pub type CityService = GenericCrudService<
     CityRepository,
 >;
 
-// <<< CUSTOM
-// END CUSTOM

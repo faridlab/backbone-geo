@@ -186,3 +186,4 @@ pub fn create_protected_country_routes<A: AuthMiddleware + Send + Sync + 'static
             }
         }))
 }
+

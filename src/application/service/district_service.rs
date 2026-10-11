@@ -32,5 +32,3 @@ pub type DistrictService = GenericCrudService<
     DistrictRepository,
 >;
 
-// <<< CUSTOM
-// END CUSTOM

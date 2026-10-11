@@ -17,5 +17,3 @@ pub use district_validator::{DistrictValidator, district_validator};
 pub use province_validator::{ProvinceValidator, province_validator};
 pub use subdistrict_validator::{SubdistrictValidator, subdistrict_validator};
 
-// <<< CUSTOM
-// END CUSTOM

@@ -11,8 +11,6 @@ use crate::domain::entity::Subdistrict;
 /// enum containing a `Crud(CrudEvent<Subdistrict>)` variant.
 pub type SubdistrictEvent = CrudEvent<Subdistrict>;
 
-// <<< CUSTOM
-// END CUSTOM
 
 use backbone_messaging::{CrudEventPublisher, NoOpCrudEventPublisher};
 use std::sync::Arc;

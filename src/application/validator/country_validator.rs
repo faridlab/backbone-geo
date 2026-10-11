@@ -17,9 +17,5 @@ pub fn country_validator() -> CountryValidator {
     EntityValidator::new()
         .rule(RequiredString::new("isocode", |e: &Country| &e.isocode))
         .rule(RequiredString::new("name", |e: &Country| &e.name))
-    // <<< CUSTOM RULES
-    // END CUSTOM RULES
 }
 
-// <<< CUSTOM
-// END CUSTOM

@@ -254,7 +254,7 @@ impl backbone_core::ApplyUpdateDto<UpdateCityDto> for City {
 // Custom DTOs
 // =============================================================================
 
-// <<< CUSTOM DTOs
 // Add custom DTOs specific to City here.
 // This section will be preserved during regeneration.
 // >>> END CUSTOM DTOs
+

@@ -13,16 +13,12 @@ pub mod district_service;
 pub mod province_service;
 pub mod subdistrict_service;
 
-// <<< CUSTOM
-// END CUSTOM
 
 pub use city_service::CityService;
 pub use country_service::CountryService;
 pub use district_service::DistrictService;
 pub use province_service::ProvinceService;
 pub use subdistrict_service::SubdistrictService;
-// <<< CUSTOM
-// END CUSTOM
 
 // This directory's extension (hand-written; ADR-0031).
 include!("mod.ext.rs");

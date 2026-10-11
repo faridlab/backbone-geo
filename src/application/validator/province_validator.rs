@@ -16,9 +16,5 @@ pub type ProvinceValidator = EntityValidator<Province>;
 pub fn province_validator() -> ProvinceValidator {
     EntityValidator::new()
         .rule(RequiredString::new("name", |e: &Province| &e.name))
-    // <<< CUSTOM RULES
-    // END CUSTOM RULES
 }
 
-// <<< CUSTOM
-// END CUSTOM

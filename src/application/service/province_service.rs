@@ -32,5 +32,3 @@ pub type ProvinceService = GenericCrudService<
     ProvinceRepository,
 >;
 
-// <<< CUSTOM
-// END CUSTOM

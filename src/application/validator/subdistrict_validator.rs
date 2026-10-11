@@ -17,9 +17,5 @@ pub fn subdistrict_validator() -> SubdistrictValidator {
     EntityValidator::new()
         .rule(RequiredString::new("name", |e: &Subdistrict| &e.name))
         .rule(OptionalNotBlank::new("postal_code", |e: &Subdistrict| e.postal_code.as_deref()))
-    // <<< CUSTOM RULES
-    // END CUSTOM RULES
 }
 
-// <<< CUSTOM
-// END CUSTOM

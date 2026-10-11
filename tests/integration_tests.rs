@@ -79,3 +79,4 @@ async fn test_subdistrict_api() {
         panic!("{} tests failed", failed.len());
     }
 }
+

@@ -32,5 +32,3 @@ pub type SubdistrictService = GenericCrudService<
     SubdistrictRepository,
 >;
 
-// <<< CUSTOM
-// END CUSTOM

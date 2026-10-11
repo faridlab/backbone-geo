@@ -11,8 +11,6 @@ mod province_repository;
 mod subdistrict_repository;
 
 // Custom persistence modules
-// <<< CUSTOM
-// END CUSTOM
 
 // Re-exports
 pub use city_repository::CityRepository;
@@ -29,5 +27,3 @@ pub use backbone_orm::repository::{
 };
 
 // Re-export custom persistence types
-// <<< CUSTOM
-// END CUSTOM

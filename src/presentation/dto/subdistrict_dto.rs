@@ -321,7 +321,7 @@ impl backbone_core::ApplyUpdateDto<UpdateSubdistrictDto> for Subdistrict {
 // Custom DTOs
 // =============================================================================
 
-// <<< CUSTOM DTOs
 // Add custom DTOs specific to Subdistrict here.
 // This section will be preserved during regeneration.
 // >>> END CUSTOM DTOs
+

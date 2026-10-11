@@ -237,7 +237,7 @@ impl backbone_core::ApplyUpdateDto<UpdateProvinceDto> for Province {
 // Custom DTOs
 // =============================================================================
 
-// <<< CUSTOM DTOs
 // Add custom DTOs specific to Province here.
 // This section will be preserved during regeneration.
 // >>> END CUSTOM DTOs
+

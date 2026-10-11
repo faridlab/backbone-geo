@@ -16,9 +16,5 @@ pub type CityValidator = EntityValidator<City>;
 pub fn city_validator() -> CityValidator {
     EntityValidator::new()
         .rule(RequiredString::new("name", |e: &City| &e.name))
-    // <<< CUSTOM RULES
-    // END CUSTOM RULES
 }
 
-// <<< CUSTOM
-// END CUSTOM

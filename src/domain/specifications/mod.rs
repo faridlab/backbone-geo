@@ -12,5 +12,3 @@ pub mod district_specification;
 pub mod province_specification;
 pub mod subdistrict_specification;
 
-// <<< CUSTOM
-// END CUSTOM
