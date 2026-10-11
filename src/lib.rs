@@ -25,11 +25,6 @@ pub mod presentation;
 pub mod seeders;
 pub mod exports;
 // <<< CUSTOM MODULES
-pub use presentation::http::create_guarded_geo_routes;
-pub use application::service::{
-    ancestor_drift_count, geo_readiness_check, GeocodeError, GeocodeProvider, GeocodeQuery,
-    GeocodeService, GeoReadinessError,
-};
 // END CUSTOM
 
 // Re-exports for convenience - Domain entities
@@ -209,3 +204,6 @@ impl Default for GeoModuleBuilder {
         Self::new()
     }
 }
+
+// This directory's extension (hand-written; ADR-0031).
+include!("mod.ext.rs");

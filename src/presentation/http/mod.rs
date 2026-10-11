@@ -12,7 +12,6 @@ pub mod province_handler;
 pub mod subdistrict_handler;
 
 // <<< CUSTOM
-pub mod guarded_routes;
 // END CUSTOM
 
 // Re-exports
@@ -22,5 +21,7 @@ pub use district_handler::{create_district_routes, create_district_read_routes, 
 pub use province_handler::{create_province_routes, create_province_read_routes, create_province_write_routes};
 pub use subdistrict_handler::{create_subdistrict_routes, create_subdistrict_read_routes, create_subdistrict_write_routes};
 // <<< CUSTOM
-pub use guarded_routes::create_guarded_geo_routes;
 // END CUSTOM
+
+// This directory's extension (hand-written; ADR-0031).
+include!("mod.ext.rs");
