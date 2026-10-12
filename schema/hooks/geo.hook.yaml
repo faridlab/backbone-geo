@@ -17,19 +17,28 @@ state_machines: []
 rules:
   - id: R1
     name: unique_country_isocode
+    entity: Country
     when: seeding
     assert: "country.isocode is unique"
     error_code: duplicate_isocode
+    enforced_by: "migrations/20260426220000_create_country_table.up.sql::idx_countries_isocode"
+    justification: "The unique index holds it on every path, generic writes included; it compares raw text (case and spacing count) and a duplicate answers 400 with the database message, never duplicate_isocode."
   - id: R2
     name: unique_subdistrict_per_district
+    entity: Subdistrict
     when: seeding
     assert: "subdistrict name is unique within its district"
     error_code: duplicate_subdistrict
+    enforced_by: "migrations/20260426220004_create_subdistrict_table.up.sql::idx_subdistricts_district_id_name"
+    justification: "The unique index holds it on every path; it also counts soft-deleted rows and compares raw text, and a duplicate answers 400 with the database message, never duplicate_subdistrict."
   - id: R3
     name: denormalized_ancestors_consistent
+    entity: Subdistrict
     when: seeding
     assert: "each row's denormalized country_id/province_id/city_id match its parent chain"
     error_code: inconsistent_ancestors
+    enforced_by: "migrations/20260829000001_geo_ancestor_fk_constraints.up.sql::fk_subdistricts_district_chain, migrations/20260829000001_geo_ancestor_fk_constraints.up.sql::fk_districts_city_province_country_chain, migrations/20260829000001_geo_ancestor_fk_constraints.up.sql::fk_cities_province_country_chain"
+    justification: "The composite chain keys refuse any row whose denormalized ancestors disagree with its parent, at seeding and at runtime alike; a refusal answers 400 or 500 with the database message, never inconsistent_ancestors."
     note: "denormalized for fast filtering; the seed data is pre-validated and FK-checked on load"
 
 events: {}

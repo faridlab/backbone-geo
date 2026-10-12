@@ -1,10 +1,7 @@
 # The rule ratchet (schema doctor): these counts may only go down. Regenerate with
 # `metaphor schema rules . --update-baseline` after enforcing a rule.
-unenforced: 3
-warnings: 3
+unenforced: 0
+warnings: 0
 machines_without_verbs: 0
 untested_rule_ids: 3
-unenforced_rules:
-- 'geo.hook.yaml: denormalized_ancestors_consistent'
-- 'geo.hook.yaml: unique_country_isocode'
-- 'geo.hook.yaml: unique_subdistrict_per_district'
+unenforced_rules: []
