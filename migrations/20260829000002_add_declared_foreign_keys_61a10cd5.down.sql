@@ -1,0 +1,11 @@
+-- Down: drop the declared foreign keys for geo module
+ALTER TABLE IF EXISTS geo.subdistricts DROP CONSTRAINT IF EXISTS fk_subdistricts_district_id;
+ALTER TABLE IF EXISTS geo.subdistricts DROP CONSTRAINT IF EXISTS fk_subdistricts_city_id;
+ALTER TABLE IF EXISTS geo.subdistricts DROP CONSTRAINT IF EXISTS fk_subdistricts_province_id;
+ALTER TABLE IF EXISTS geo.subdistricts DROP CONSTRAINT IF EXISTS fk_subdistricts_country_id;
+ALTER TABLE IF EXISTS geo.provinces DROP CONSTRAINT IF EXISTS fk_provinces_country_id;
+ALTER TABLE IF EXISTS geo.districts DROP CONSTRAINT IF EXISTS fk_districts_city_id;
+ALTER TABLE IF EXISTS geo.districts DROP CONSTRAINT IF EXISTS fk_districts_province_id;
+ALTER TABLE IF EXISTS geo.districts DROP CONSTRAINT IF EXISTS fk_districts_country_id;
+ALTER TABLE IF EXISTS geo.cities DROP CONSTRAINT IF EXISTS fk_cities_province_id;
+ALTER TABLE IF EXISTS geo.cities DROP CONSTRAINT IF EXISTS fk_cities_country_id;
