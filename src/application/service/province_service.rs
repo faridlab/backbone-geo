@@ -32,3 +32,45 @@ pub type ProvinceService = GenericCrudService<
     ProvinceRepository,
 >;
 
+/// The rules the schema declares for Province, checked against the row a create or update
+/// would store. The generated build attaches it to [`ProvinceService`]. A refusing rule's
+/// break answers 422; a rule in shadow is logged under `backbone::write_guard` and the
+/// write goes ahead.
+pub struct ProvinceRowRules;
+
+#[async_trait::async_trait]
+impl backbone_core::write_guard::WriteGuard<Province> for ProvinceRowRules {
+    async fn check(
+        &self,
+        ctx: &backbone_core::write_guard::WriteCtx<'_, Province>,
+    ) -> backbone_core::write_guard::GuardOutcome {
+        use backbone_core::row_rule as r;
+        use backbone_core::violation::Violation;
+        use backbone_core::write_guard::{GuardOutcome, WriteKind};
+        let (create, update) = (ctx.kind == WriteKind::Create, ctx.kind == WriteKind::Update);
+        let Some(after) = ctx.after.filter(|_| create || update) else {
+            return GuardOutcome::allow();
+        };
+        let Ok(row) = serde_json::to_value(after) else {
+            return GuardOutcome::allow();
+        };
+        let row = &row;
+        let old = ctx.before.and_then(|b| serde_json::to_value(b).ok());
+        let mut shadow = Vec::new();
+        let mut refuse = Vec::new();
+        // `name_required` (@required on Province.name)
+        if (create || (update && r::changed(old.as_ref(), row, &["name"]))) && !r::holds(&r::and(r::is_not_null(r::field(row, "name")), r::not(r::is_empty(r::trim(r::field(row, "name")))))) {
+            refuse.push(Violation::new("name", "required", "name is required"));
+        }
+        // `name_max_length` (@max(120) on Province.name)
+        if (create || (update && r::changed(old.as_ref(), row, &["name"]))) && !r::holds(&r::le(r::length(r::field(row, "name")), r::Val::Num(120.0_f64))) {
+            shadow.push(Violation::new("name", "max_length", "name must be at most 120 characters").with_param("max", 120_i64));
+        }
+        // `country_id_required` (@required on Province.country_id)
+        if (create || (update && r::changed(old.as_ref(), row, &["country_id"]))) && !r::holds(&r::and(r::is_not_null(r::field(row, "country_id")), r::not(r::is_empty(r::trim(r::field(row, "country_id")))))) {
+            refuse.push(Violation::new("country_id", "required", "country_id is required"));
+        }
+        GuardOutcome { refuse, shadow }
+    }
+}
+

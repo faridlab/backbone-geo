@@ -38,9 +38,6 @@ pub use application::service::DistrictService;
 pub use application::service::ProvinceService;
 pub use application::service::SubdistrictService;
 
-// Re-exports - Validation
-pub use application::validator::{ValidationError, ValidationResult};
-
 use std::sync::Arc;
 use axum::Router;
 use sqlx::PgPool;
@@ -154,23 +151,23 @@ impl GeoModuleBuilder {
 
         // City service
         let city_repository = Arc::new(CityRepository::new(db_pool.clone()));
-        let city_service = Arc::new(CityService::with_repository(city_repository.clone()));
+        let city_service = Arc::new(CityService::with_repository(city_repository.clone()).with_guard(Arc::new(crate::application::service::CityRowRules)));
 
         // Country service
         let country_repository = Arc::new(CountryRepository::new(db_pool.clone()));
-        let country_service = Arc::new(CountryService::with_repository(country_repository.clone()));
+        let country_service = Arc::new(CountryService::with_repository(country_repository.clone()).with_guard(Arc::new(crate::application::service::CountryRowRules)));
 
         // District service
         let district_repository = Arc::new(DistrictRepository::new(db_pool.clone()));
-        let district_service = Arc::new(DistrictService::with_repository(district_repository.clone()));
+        let district_service = Arc::new(DistrictService::with_repository(district_repository.clone()).with_guard(Arc::new(crate::application::service::DistrictRowRules)));
 
         // Province service
         let province_repository = Arc::new(ProvinceRepository::new(db_pool.clone()));
-        let province_service = Arc::new(ProvinceService::with_repository(province_repository.clone()));
+        let province_service = Arc::new(ProvinceService::with_repository(province_repository.clone()).with_guard(Arc::new(crate::application::service::ProvinceRowRules)));
 
         // Subdistrict service
         let subdistrict_repository = Arc::new(SubdistrictRepository::new(db_pool.clone()));
-        let subdistrict_service = Arc::new(SubdistrictService::with_repository(subdistrict_repository.clone()));
+        let subdistrict_service = Arc::new(SubdistrictService::with_repository(subdistrict_repository.clone()).with_guard(Arc::new(crate::application::service::SubdistrictRowRules)));
 
 
         Ok(GeoModule {

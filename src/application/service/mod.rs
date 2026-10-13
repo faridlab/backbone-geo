@@ -19,6 +19,11 @@ pub use country_service::CountryService;
 pub use district_service::DistrictService;
 pub use province_service::ProvinceService;
 pub use subdistrict_service::SubdistrictService;
+pub use city_service::CityRowRules;
+pub use country_service::CountryRowRules;
+pub use district_service::DistrictRowRules;
+pub use province_service::ProvinceRowRules;
+pub use subdistrict_service::SubdistrictRowRules;
 
 // This directory's extension (hand-written; ADR-0031).
 include!("mod.ext.rs");
