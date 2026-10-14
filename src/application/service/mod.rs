@@ -25,5 +25,45 @@ pub use district_service::DistrictRowRules;
 pub use province_service::ProvinceRowRules;
 pub use subdistrict_service::SubdistrictRowRules;
 
+/// A `CityService` over `repository` with its write guard attached: the way to build it, so its writes are
+/// served only with the rules the schema declares.
+pub fn build_city_service(
+    repository: std::sync::Arc<crate::infrastructure::persistence::CityRepository>,
+) -> CityService {
+    CityService::with_repository(repository).with_guard(std::sync::Arc::new(CityRowRules))
+}
+
+/// A `CountryService` over `repository` with its write guard attached: the way to build it, so its writes are
+/// served only with the rules the schema declares.
+pub fn build_country_service(
+    repository: std::sync::Arc<crate::infrastructure::persistence::CountryRepository>,
+) -> CountryService {
+    CountryService::with_repository(repository).with_guard(std::sync::Arc::new(CountryRowRules))
+}
+
+/// A `DistrictService` over `repository` with its write guard attached: the way to build it, so its writes are
+/// served only with the rules the schema declares.
+pub fn build_district_service(
+    repository: std::sync::Arc<crate::infrastructure::persistence::DistrictRepository>,
+) -> DistrictService {
+    DistrictService::with_repository(repository).with_guard(std::sync::Arc::new(DistrictRowRules))
+}
+
+/// A `ProvinceService` over `repository` with its write guard attached: the way to build it, so its writes are
+/// served only with the rules the schema declares.
+pub fn build_province_service(
+    repository: std::sync::Arc<crate::infrastructure::persistence::ProvinceRepository>,
+) -> ProvinceService {
+    ProvinceService::with_repository(repository).with_guard(std::sync::Arc::new(ProvinceRowRules))
+}
+
+/// A `SubdistrictService` over `repository` with its write guard attached: the way to build it, so its writes are
+/// served only with the rules the schema declares.
+pub fn build_subdistrict_service(
+    repository: std::sync::Arc<crate::infrastructure::persistence::SubdistrictRepository>,
+) -> SubdistrictService {
+    SubdistrictService::with_repository(repository).with_guard(std::sync::Arc::new(SubdistrictRowRules))
+}
+
 // This directory's extension (hand-written; ADR-0031).
 include!("mod.ext.rs");
