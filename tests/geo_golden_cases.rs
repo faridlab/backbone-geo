@@ -10,15 +10,35 @@ async fn pool() -> PgPool {
         .unwrap_or_else(|_| "postgresql://postgres:postgres@localhost:5433/backbone_geo".to_string());
     PgPool::connect(&url).await.unwrap()
 }
+
+/// Every test here runs against the one database DATABASE_URL names, and they are not
+/// independent against it: GGC-6 mints a chain-inconsistent row (triggers disabled) that
+/// GGC-5's zero-drift assert must never see, and GGC-5's unseeded branch counts countries
+/// the fixtures of its siblings add. One at a time, so no test reads another's scratch.
+static ONE_DB_AT_A_TIME: std::sync::Mutex<()> = std::sync::Mutex::new(());
+
+fn take_turn() -> std::sync::MutexGuard<'static, ()> {
+    ONE_DB_AT_A_TIME.lock().unwrap_or_else(|poisoned| poisoned.into_inner())
+}
+
 fn uq(p: &str) -> String {
     format!("{p}-{}", &Uuid::new_v4().simple().to_string()[..8])
+}
+
+/// A unique isocode inside the column's three characters: the schema declares `@max(3)` and the
+/// database enforces it as a check, so the fixture's uniqueness must fit in the same three
+/// characters the rule allows.
+fn uq_isocode() -> String {
+    const CHARS: &[u8] = b"0123456789abcdefghijklmnopqrstuvwxyz";
+    let bits = u128::from_be_bytes(*Uuid::new_v4().as_bytes());
+    (0..3).map(|k| CHARS[usize::try_from((bits >> (8 * k)) % 36).unwrap()] as char).collect()
 }
 
 /// Insert a minimal country→province→city→district→subdistrict chain; return the ids.
 async fn fixture(pool: &PgPool) -> (Uuid, Uuid, Uuid, Uuid, Uuid) {
     let c = Uuid::new_v4();
     sqlx::query("INSERT INTO geo.countries (id, isocode, name, phonecode) VALUES ($1,$2,'Testland',62)")
-        .bind(c).bind(uq("T")).execute(pool).await.unwrap();
+        .bind(c).bind(uq_isocode()).execute(pool).await.unwrap();
     let p = Uuid::new_v4();
     sqlx::query("INSERT INTO geo.provinces (id, name, country_id) VALUES ($1,'Prov',$2)")
         .bind(p).bind(c).execute(pool).await.unwrap();
@@ -40,6 +60,7 @@ async fn fixture(pool: &PgPool) -> (Uuid, Uuid, Uuid, Uuid, Uuid) {
 // GGC-1: an address resolves up the full chain subdistrict → district → city → province → country.
 #[tokio::test]
 async fn address_chain_resolves() {
+    let _turn = take_turn();
     let pool = pool().await;
     let (_c, _p, _ci, _d, s) = fixture(&pool).await;
     let row = sqlx::query(
@@ -66,6 +87,7 @@ async fn address_chain_resolves() {
 // GGC-2: subdistrict name is unique within a district.
 #[tokio::test]
 async fn subdistrict_unique_per_district() {
+    let _turn = take_turn();
     let pool = pool().await;
     let (c, p, ci, d, _s) = fixture(&pool).await;
     // "Sub" already exists in district d → inserting it again must violate the unique index.
@@ -82,6 +104,7 @@ async fn subdistrict_unique_per_district() {
 // GGC-3: coordinates round-trip.
 #[tokio::test]
 async fn coords_stored() {
+    let _turn = take_turn();
     let pool = pool().await;
     let (_c, _p, _ci, _d, s) = fixture(&pool).await;
     use rust_decimal::Decimal;
@@ -97,6 +120,7 @@ async fn coords_stored() {
 // Skips gracefully if the seed hasn't been loaded (fresh CI DB).
 #[tokio::test]
 async fn indonesia_seed_smoke() {
+    let _turn = take_turn();
     let pool = pool().await;
     let provinces: i64 = sqlx::query_scalar(
         "SELECT COUNT(*) FROM geo.provinces WHERE country_id IN (SELECT id FROM geo.countries WHERE isocode='ID')",
@@ -127,6 +151,7 @@ async fn indonesia_seed_smoke() {
 #[tokio::test]
 async fn readiness_and_ancestor_consistency() {
     use backbone_geo::{ancestor_drift_count, geo_readiness_check, GeoReadinessError};
+    let _turn = take_turn();
     let pool = pool().await;
     let countries: i64 = sqlx::query_scalar("SELECT COUNT(*) FROM geo.countries")
         .fetch_one(&pool).await.unwrap();
@@ -151,6 +176,7 @@ async fn readiness_and_ancestor_consistency() {
 #[tokio::test]
 async fn readiness_detects_ancestor_drift() {
     use backbone_geo::{ancestor_drift_count, geo_readiness_check, GeoReadinessError};
+    let _turn = take_turn();
     let pool = pool().await;
     let (c, p, ci, d, _s) = fixture(&pool).await;
     let base = ancestor_drift_count(&pool).await.unwrap();
