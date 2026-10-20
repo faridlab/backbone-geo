@@ -9,6 +9,13 @@ models:
     collection: provinces
     description: "First-level administrative division (provinsi)"
 
+    # Reference data served to anonymous callers: composing services mount this
+    # hierarchy's reads outside their authentication layer (address pickers on
+    # public forms), so the reads are declared public — they carry no permission
+    # layer and read no caller. Writes and every other action stay permissioned
+    # (ADR-0033 amendment).
+    public: [read]
+
     fields:
       id:
         type: uuid
