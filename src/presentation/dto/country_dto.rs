@@ -33,6 +33,7 @@ pub struct CreateCountryDto {
     #[cfg_attr(feature = "openapi", schema(example = "example"))]
     pub name: String,
     #[cfg_attr(feature = "openapi", schema(example = 42))]
+    #[serde(default)]
     pub phonecode: i32,
 }
 
@@ -236,12 +237,4 @@ impl backbone_core::ApplyUpdateDto<UpdateCountryDto> for Country {
         Ok(self)
     }
 }
-
-// =============================================================================
-// Custom DTOs
-// =============================================================================
-
-// Add custom DTOs specific to Country here.
-// This section will be preserved during regeneration.
-// >>> END CUSTOM DTOs
 

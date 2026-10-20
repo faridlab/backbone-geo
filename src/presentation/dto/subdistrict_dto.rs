@@ -112,12 +112,12 @@ pub struct PatchSubdistrictDto {
     #[cfg_attr(feature = "openapi", schema(example = "550e8400-e29b-41d4-a716-446655440000"))]
     #[serde(skip_serializing_if = "Option::is_none", alias = "district_id")]
     pub district_id: Option<Uuid>,
-    #[serde(skip_serializing_if = "Option::is_none", alias = "postal_code")]
-    pub postal_code: Option<String>,
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub latitude: Option<Decimal>,
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub longitude: Option<Decimal>,
+    #[serde(default, deserialize_with = "crate::presentation::dto::double_option", alias = "postal_code")]
+    pub postal_code: Option<Option<String>>,
+    #[serde(default, deserialize_with = "crate::presentation::dto::double_option")]
+    pub latitude: Option<Option<Decimal>>,
+    #[serde(default, deserialize_with = "crate::presentation::dto::double_option")]
+    pub longitude: Option<Option<Decimal>>,
 }
 
 impl PatchSubdistrictDto {
@@ -304,12 +304,4 @@ impl backbone_core::ApplyUpdateDto<UpdateSubdistrictDto> for Subdistrict {
         Ok(self)
     }
 }
-
-// =============================================================================
-// Custom DTOs
-// =============================================================================
-
-// Add custom DTOs specific to Subdistrict here.
-// This section will be preserved during regeneration.
-// >>> END CUSTOM DTOs
 

@@ -156,6 +156,12 @@ impl super::Entity for Province {
 }
 
 impl backbone_core::PersistentEntity for Province {
+    fn references() -> &'static [backbone_core::Reference] {
+        const REFERENCES: &[backbone_core::Reference] = &[
+            backbone_core::Reference::new("country_id", "geo.countries", "id"),
+        ];
+        REFERENCES
+    }
     fn entity_id(&self) -> String {
         self.id.to_string()
     }

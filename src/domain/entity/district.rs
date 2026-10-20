@@ -166,6 +166,14 @@ impl super::Entity for District {
 }
 
 impl backbone_core::PersistentEntity for District {
+    fn references() -> &'static [backbone_core::Reference] {
+        const REFERENCES: &[backbone_core::Reference] = &[
+            backbone_core::Reference::new("country_id", "geo.countries", "id"),
+            backbone_core::Reference::new("province_id", "geo.provinces", "id"),
+            backbone_core::Reference::new("city_id", "geo.cities", "id"),
+        ];
+        REFERENCES
+    }
     fn entity_id(&self) -> String {
         self.id.to_string()
     }

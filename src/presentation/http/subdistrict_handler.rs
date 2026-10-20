@@ -81,6 +81,14 @@ impl axum::response::IntoResponse for SubdistrictError {
 // Route Configuration
 // =============================================================================
 
+/// The permissions this entity's generic routes require: `subdistrict:<action>` for `read`, `create`,
+/// `update`, `delete`, `restore` and `purge`, with any rename the schema's `requires:` declares.
+pub fn subdistrict_permissions() -> backbone_core::http::CrudPermissions {
+    backbone_core::http::CrudPermissions::new("subdistrict")
+        .in_module("geo")
+        .public(backbone_core::permission::Gate::Read)
+}
+
 /// Create Axum router with all 16 Backbone endpoints for Subdistrict.
 ///
 /// # Routes
@@ -110,21 +118,23 @@ impl axum::response::IntoResponse for SubdistrictError {
 /// let router = create_subdistrict_routes(service);
 /// ```
 pub fn create_subdistrict_routes(service: Arc<SubdistrictService>) -> Router {
-    BackboneCrudHandler::<SubdistrictService, Subdistrict, CreateSubdistrictDto, UpdateSubdistrictDto, SubdistrictResponseDto>::routes(
+    BackboneCrudHandler::<SubdistrictService, Subdistrict, CreateSubdistrictDto, UpdateSubdistrictDto, SubdistrictResponseDto>::routes_guarded(
         service,
         "/subdistricts",
+        subdistrict_permissions(),
     )
 }
 
 /// Create Axum router with only the read (GET) endpoints for Subdistrict.
 ///
-/// Safe for public, unauthenticated exposure (e.g., reference data).
+/// Each route requires the entity's `read` permission, so it needs an authenticated caller.
 /// Mutations must be served separately via `create_subdistrict_write_routes`,
 /// typically wrapped in an auth middleware layer.
 pub fn create_subdistrict_read_routes(service: Arc<SubdistrictService>) -> Router {
-    BackboneCrudHandler::<SubdistrictService, Subdistrict, CreateSubdistrictDto, UpdateSubdistrictDto, SubdistrictResponseDto>::read_routes(
+    BackboneCrudHandler::<SubdistrictService, Subdistrict, CreateSubdistrictDto, UpdateSubdistrictDto, SubdistrictResponseDto>::read_routes_guarded(
         service,
         "/subdistricts",
+        subdistrict_permissions(),
     )
 }
 
@@ -140,9 +150,10 @@ pub fn create_subdistrict_read_routes(service: Arc<SubdistrictService>) -> Route
 /// service (e.g. a command router over its domain engine), serve THAT instead
 /// for any mutation that must respect domain rules.
 pub fn create_subdistrict_write_routes(service: Arc<SubdistrictService>) -> Router {
-    BackboneCrudHandler::<SubdistrictService, Subdistrict, CreateSubdistrictDto, UpdateSubdistrictDto, SubdistrictResponseDto>::write_routes(
+    BackboneCrudHandler::<SubdistrictService, Subdistrict, CreateSubdistrictDto, UpdateSubdistrictDto, SubdistrictResponseDto>::write_routes_guarded(
         service,
         "/subdistricts",
+        subdistrict_permissions(),
     )
 }
 

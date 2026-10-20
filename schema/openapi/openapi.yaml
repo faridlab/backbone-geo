@@ -1898,7 +1898,6 @@ components:
         - name
         - country_id
         - province_id
-        - metadata
       properties:
         name:
           type: string
@@ -1909,8 +1908,6 @@ components:
         province_id:
           type: string
           format: uuid
-        metadata:
-          type: object
 
     UpdateCityRequest:
       type: object
@@ -1918,7 +1915,6 @@ components:
         - name
         - country_id
         - province_id
-        - metadata
       properties:
         name:
           type: string
@@ -1929,8 +1925,6 @@ components:
         province_id:
           type: string
           format: uuid
-        metadata:
-          type: object
 
     PatchCityRequest:
       type: object
@@ -1944,8 +1938,6 @@ components:
         province_id:
           type: string
           format: uuid
-        metadata:
-          type: object
 
     CityList:
       type: object
@@ -1999,8 +1991,6 @@ components:
       required:
         - isocode
         - name
-        - phonecode
-        - metadata
       properties:
         isocode:
           type: string
@@ -2011,8 +2001,6 @@ components:
         phonecode:
           type: integer
           format: int32
-        metadata:
-          type: object
 
     UpdateCountryRequest:
       type: object
@@ -2020,7 +2008,6 @@ components:
         - isocode
         - name
         - phonecode
-        - metadata
       properties:
         isocode:
           type: string
@@ -2031,8 +2018,6 @@ components:
         phonecode:
           type: integer
           format: int32
-        metadata:
-          type: object
 
     PatchCountryRequest:
       type: object
@@ -2046,8 +2031,6 @@ components:
         phonecode:
           type: integer
           format: int32
-        metadata:
-          type: object
 
     CountryList:
       type: object
@@ -2107,7 +2090,6 @@ components:
         - country_id
         - province_id
         - city_id
-        - metadata
       properties:
         name:
           type: string
@@ -2121,8 +2103,6 @@ components:
         city_id:
           type: string
           format: uuid
-        metadata:
-          type: object
 
     UpdateDistrictRequest:
       type: object
@@ -2131,7 +2111,6 @@ components:
         - country_id
         - province_id
         - city_id
-        - metadata
       properties:
         name:
           type: string
@@ -2145,8 +2124,6 @@ components:
         city_id:
           type: string
           format: uuid
-        metadata:
-          type: object
 
     PatchDistrictRequest:
       type: object
@@ -2163,8 +2140,6 @@ components:
         city_id:
           type: string
           format: uuid
-        metadata:
-          type: object
 
     DistrictList:
       type: object
@@ -2214,7 +2189,6 @@ components:
       required:
         - name
         - country_id
-        - metadata
       properties:
         name:
           type: string
@@ -2222,15 +2196,12 @@ components:
         country_id:
           type: string
           format: uuid
-        metadata:
-          type: object
 
     UpdateProvinceRequest:
       type: object
       required:
         - name
         - country_id
-        - metadata
       properties:
         name:
           type: string
@@ -2238,8 +2209,6 @@ components:
         country_id:
           type: string
           format: uuid
-        metadata:
-          type: object
 
     PatchProvinceRequest:
       type: object
@@ -2250,8 +2219,6 @@ components:
         country_id:
           type: string
           format: uuid
-        metadata:
-          type: object
 
     ProvinceList:
       type: object
@@ -2326,7 +2293,6 @@ components:
         - province_id
         - city_id
         - district_id
-        - metadata
       properties:
         name:
           type: string
@@ -2353,8 +2319,6 @@ components:
         longitude:
           nullable: true
           type: string
-        metadata:
-          type: object
 
     UpdateSubdistrictRequest:
       type: object
@@ -2364,7 +2328,6 @@ components:
         - province_id
         - city_id
         - district_id
-        - metadata
       properties:
         name:
           type: string
@@ -2391,8 +2354,6 @@ components:
         longitude:
           nullable: true
           type: string
-        metadata:
-          type: object
 
     PatchSubdistrictRequest:
       type: object
@@ -2422,8 +2383,6 @@ components:
         longitude:
           nullable: true
           type: string
-        metadata:
-          type: object
 
     SubdistrictList:
       type: object

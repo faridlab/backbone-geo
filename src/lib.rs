@@ -122,6 +122,20 @@ impl GeoModule {
             .merge(create_subdistrict_read_routes(self.subdistrict_service.clone()))
     }
 
+    /// The routes of the entities the schema declares `public:` (City, Country, District, Province, Subdistrict), for a host to mount
+    /// outside its authentication layer so reference data is served without a login. Only the
+    /// declared public actions answer an unauthenticated caller (the reads, unless `public:` lists more);
+    /// every other route of these entities still refuses it with `401`. The tenant scope is the
+    /// host's to resolve before this router, as for every route.
+    pub fn public_routes(&self) -> Router {
+        Router::new()
+            .merge(presentation::http::city_handler::create_city_routes(self.city_service.clone()))
+            .merge(presentation::http::country_handler::create_country_routes(self.country_service.clone()))
+            .merge(presentation::http::district_handler::create_district_routes(self.district_service.clone()))
+            .merge(presentation::http::province_handler::create_province_routes(self.province_service.clone()))
+            .merge(presentation::http::subdistrict_handler::create_subdistrict_routes(self.subdistrict_service.clone()))
+    }
+
 }
 
 /// Builder for GeoModule

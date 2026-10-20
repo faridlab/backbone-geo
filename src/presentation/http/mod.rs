@@ -13,11 +13,11 @@ pub mod subdistrict_handler;
 
 
 // Re-exports
-pub use city_handler::{create_city_routes, create_city_read_routes, create_city_write_routes};
-pub use country_handler::{create_country_routes, create_country_read_routes, create_country_write_routes};
-pub use district_handler::{create_district_routes, create_district_read_routes, create_district_write_routes};
-pub use province_handler::{create_province_routes, create_province_read_routes, create_province_write_routes};
-pub use subdistrict_handler::{create_subdistrict_routes, create_subdistrict_read_routes, create_subdistrict_write_routes};
+pub use city_handler::{create_city_routes, create_city_read_routes, create_city_write_routes, city_permissions};
+pub use country_handler::{create_country_routes, create_country_read_routes, create_country_write_routes, country_permissions};
+pub use district_handler::{create_district_routes, create_district_read_routes, create_district_write_routes, district_permissions};
+pub use province_handler::{create_province_routes, create_province_read_routes, create_province_write_routes, province_permissions};
+pub use subdistrict_handler::{create_subdistrict_routes, create_subdistrict_read_routes, create_subdistrict_write_routes, subdistrict_permissions};
 
 // This directory's extension (hand-written; ADR-0031).
 include!("mod.ext.rs");
