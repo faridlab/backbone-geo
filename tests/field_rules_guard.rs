@@ -1,6 +1,5 @@
-//! The generated write guard checks a country's field attributes: a blank required field
-//! refuses the write, a length limit runs in shadow, and an update is checked only for the
-//! fields it changes.
+//! The generated write guard checks a country's field attributes: a blank required field and a
+//! length limit each refuse the write, and an update is checked only for the fields it changes.
 
 use backbone_core::write_guard::{WriteCtx, WriteGuard, WriteKind};
 use backbone_geo::application::service::CountryRowRules;
@@ -18,12 +17,12 @@ async fn a_blank_required_field_refuses_a_create() {
 }
 
 #[tokio::test]
-async fn a_length_limit_runs_in_shadow() {
+async fn a_length_limit_refuses_a_create() {
     let country = Country::new("IDN".into(), "x".repeat(200), 62);
     let out = CountryRowRules.check(&WriteCtx::new(WriteKind::Create, None, Some(&country))).await;
-    assert!(out.refuse.is_empty(), "{:?}", codes(&out.refuse));
-    assert_eq!(codes(&out.shadow), vec![("name".to_string(), "max_length".to_string())]);
-    assert_eq!(out.shadow[0].params.get("max"), Some(&serde_json::json!(120)));
+    assert!(out.shadow.is_empty(), "{:?}", codes(&out.shadow));
+    assert_eq!(codes(&out.refuse), vec![("name".to_string(), "max_length".to_string())]);
+    assert_eq!(out.refuse[0].params.get("max"), Some(&serde_json::json!(120)));
 }
 
 #[tokio::test]
