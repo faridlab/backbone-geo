@@ -33,6 +33,8 @@ user_owned:
   # Behavior tests + BDD features.
   - "tests/geo_golden_cases.rs"
   - "tests/integrity_probes.rs"
+  - "tests/field_rules_guard.rs"
+  - "tests/public_route_probes.rs"
   - "tests/features/**"
 
   # Adopted reference seed data (Indonesia wilayah) — must never be regenerated/wiped.
